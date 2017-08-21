@@ -14,6 +14,14 @@ const CreateAccount = ({ children }) => (
       <button className="js-modal-close">x</button>
     </div>
     <div className="modal-body">
+      <div className="login-progress">
+        <ul className="d-flex justify-content-between items-center col-12 mb-4">
+          <li className="col-0 active" />
+          <li className="col-4 active" />
+          <li className="col-4" />
+          <li className="col-4" />
+        </ul>
+      </div>
       <Progress />
       <Route exact path="/create-account" component={UsernameForm} />
       <Route path="/create-account/email" component={EmailForm} />
