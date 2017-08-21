@@ -1,10 +1,7 @@
 import React from 'react';
-import Progress from '../../Progress';
 
 const Phone = () => (
   <form>
-    <Progress />
-
     <h2>Next your phone</h2>
     <p>Enter your phone below.</p>
 
