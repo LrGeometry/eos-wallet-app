@@ -39,20 +39,6 @@ class Login extends Component {
             type="text"
           />
         </fieldset>
-=======
-	render() {
-		return (
-			<form>
-				<fieldset>
-					<label>Username/label>
-					<input type="text" />
-				</fieldset>
-
-				<fieldset>
-					<label>Password</label>
-					<input type="text" />
-				</fieldset>
->>>>>>> Revert "Update forms"
 
         <fieldset className="form-group">
           <label htmlFor="keepLoggedIn">Keep me logged in</label>
@@ -86,12 +72,6 @@ class Login extends Component {
       </form>
     );
   }
-=======
-				<button type="submit">Login</button>
-			</form>
-		)
-	}
->>>>>>> Revert "Update forms"
 }
 
 export default Login;

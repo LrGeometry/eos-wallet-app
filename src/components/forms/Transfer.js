@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 // import mutation
 
 class TransferForm extends Component {
-<<<<<<< HEAD
  static defaultProps = {
    balance: '0.000',
  }
@@ -89,7 +88,7 @@ class TransferForm extends Component {
            value={memo}
          />
        </fieldset>
-       
+
        <div className="row col-12 no-gutters p-0">
          <div className="col-sm-auto col-6 pl-0 pr-2">
            <button
@@ -110,31 +109,6 @@ class TransferForm extends Component {
      </form>
    );
  }
-=======
-	render() {
-		return (
-			<form>
-				<fieldset>
-					<label>To</label>
-					<input type="text" />
-				</fieldset>
-
-				<fieldset>
-					<label>Amount</label>
-					<input type="text" />
-				</fieldset>
-
-				<fieldset>
-					<label>Memo</label>
-					<input type="text" />
-				</fieldset>
-
-				<button type="submit">Submit</button>
-				<div>Clear</div>
-			</form>
-		)
-	}
->>>>>>> Revert "Update forms"
 }
 
 export default TransferForm;

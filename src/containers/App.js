@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router';
+import { Helmet } from 'react-helmet';
 import {
   Header,
   Footer,
   Navbar } from '../components';
 import {
-<<<<<<< HEAD
   About,
   Faqs,
   NoMatch,
@@ -67,9 +67,6 @@ class App extends Component {
     const { className, location, modalRoutes } = this.props;
     const isModal = modalRoutes.some(r => new RegExp(r).test(location.pathname));
 
-    console.log(this.previousLocation, location);
-
-<<<<<<< HEAD
     return (
       <main className={className}>
         <Helmet titleTemplate="%s | EOS Wallet" defaultTitle="EOS Wallet" />
@@ -136,28 +133,6 @@ class App extends Component {
       </main>
     );
   }
-=======
-		return (
-			<main className={className}>
-				<Header />
-				<Navbar />
-				<Scene>
-					<Route exact path="/" component={Home} />
-					<Route path="/transfer" component={Transfer} />
-					<Route path="/transactions" component={TransactionHistory} />
-					<Route path="/permissions" component={Permissions} />
-					<Route path="/user/:id" component={Profile} />
-					<Route path="/about" component={About} />
-					<Route path="/faqs" component={Faqs} />
-					<Route path="/users" component={Users} />
-					<Route path="/preferences" component={Preferences} />
-					<Route path="*" component={NoMatch} />
-					<Footer />
-				</Scene>
-			</main>
-		)
-	}
->>>>>>> Revert "Update forms"
 }
 
 export default App;
