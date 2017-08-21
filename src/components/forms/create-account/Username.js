@@ -1,7 +1,10 @@
 import React from 'react';
+import Progress from '../../Progress';
 
 const Username = () => (
   <form>
+    <Progress />
+
     <h2>Select an Account Name</h2>
     <p>Your account name is how you will be known on EOS.</p>
 
