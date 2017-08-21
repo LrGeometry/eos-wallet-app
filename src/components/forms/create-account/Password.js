@@ -1,22 +1,21 @@
 import React from 'react';
 
-const Email = () => (
+const Password = () => (
   <form>
-    <h2>Next your email</h2>
-    <p>Enter your email below.</p>
+    <h2>Choose a password</h2>
 
     <fieldset className="form-group">
-      <label htmlFor="username">Email</label>
+      <label htmlFor="username">Password</label>
       <div clasName="input-container">
         <div className="icon" />
         <div className="input-prefix">
           <input
-            aria-describedby="username"
+            aria-describedby="password"
             className="form-control form-control-lg prefix"
-            id="username"
-            name="username"
+            id="password"
+            name="password"
             required
-            type="email"
+            type="password"
           />
         </div>
       </div>
@@ -33,5 +32,5 @@ const Email = () => (
   </form>
 );
 
-export default Email;
+export default Password;
 

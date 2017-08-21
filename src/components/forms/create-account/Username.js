@@ -1,10 +1,7 @@
 import React from 'react';
-import Progress from '../../Progress';
 
 const Username = () => (
   <form>
-    <Progress />
-
     <h2>Select an Account Name</h2>
     <p>Your account name is how you will be known on EOS.</p>
 
@@ -24,6 +21,15 @@ const Username = () => (
         </div>
       </div>
     </fieldset>
+    <div className="modal-cta">
+      <div className="row col-12 no-gutters p-0">
+        <div className="col-sm-auto col-12 pl-0 pr-sm-2 pr-0 mb-sm-0 mb-3">
+          <button className="btn btn-primary btn-lg btn-block" type="submit">
+            Continue
+          </button>
+        </div>
+      </div>
+    </div>
   </form>
 );
 
