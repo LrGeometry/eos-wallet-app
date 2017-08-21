@@ -1,10 +1,7 @@
 import React from 'react';
-import Progress from '../../Progress';
 
 const Email = () => (
   <form>
-    <Progress />
-
     <h2>Next your email</h2>
     <p>Enter your email below.</p>
 
