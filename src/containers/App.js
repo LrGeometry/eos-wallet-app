@@ -70,6 +70,7 @@ class App extends Component {
     return (
       <main className={className}>
         <Helmet titleTemplate="%s | EOS Wallet" defaultTitle="EOS Wallet" />
+
         <Header />
         <div className="flex-fill">
           <Navbar />
