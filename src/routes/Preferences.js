@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { PreferencesForm } from '../components';
 import { Helmet } from 'react-helmet';
 
-
 class Preferences extends Component {
   render() {
     return (
