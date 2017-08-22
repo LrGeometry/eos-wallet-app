@@ -1,20 +1,21 @@
 import React, { Component } from 'react';
-import Link from './Link';
+import { NavLink } from 'react-router-dom';
+import LoginForm from './forms/Login';
 import {
   Balance,
   List,
 } from './';
 
-const NavLink = ({
+const NavbarLink = ({
   className = 'col-link p3',
   text,
   ...props }) => (
-  <Link
+  <NavLink
     className={className}
     {...props}
   >
     {text}
-  </Link>
+  </NavLink>
 );
 
 const UserLink = ({
@@ -22,14 +23,16 @@ const UserLink = ({
   iconClass,
   text,
   ...props }) => (
-  <Link
+  <NavLink
     className={className}
     {...props}
   >
     <span className={iconClass} />
     {text}
-  </Link>
+  </NavLink>
 );
+
+const activeClassName = 'active';
 
 class Navbar extends Component {
  static defaultProps = {
@@ -39,37 +42,39 @@ class Navbar extends Component {
      userActions: '-is-logged-in',
      userActionsList: '-links',
    },
+   isLoggedIn: true,
    userActions: [
-     { to: '/transfer', text: 'Transfer', iconClass: 'icon-eos_icons_transfer' },
-     { to: '/transactions', text: 'Transaction History', iconClass: 'icon-eos_icons_history' },
-     { to: '/permissions', text: 'Permissions', iconClass: 'icon-eos_icons_permissions' },
+     { to: '/transfer', text: 'Transfer', iconClass: 'icon-eos_icons_transfer', activeClassName },
+     { to: '/transactions', text: 'Transaction History', iconClass: 'icon-eos_icons_history', activeClassName },
+     { to: '/permissions', text: 'Permissions', iconClass: 'icon-eos_icons_permissions', activeClassName },
    ],
    links: [
-     { to: '/users', text: 'Users' },
-     { to: '/about', text: 'About' },
-     { to: '/user/2', text: 'Users' },
-     { to: '/faq', text: 'FAQ' },
+     { to: '/users', text: 'Users', activeClassName },
+     { to: '/about', text: 'About', activeClassName },
+     { to: '/faq', text: 'FAQ', activeClassName },
    ],
  }
 
  render() {
-   const { className, links, styles, userActions } = this.props;
+   const { className, links, styles, userActions, isLoggedIn } = this.props;
 
    return (
      <nav className={className}>
        <div className={styles.userActions}>
-         <Balance />
-         <List
-           className={styles.userActionLinks}
-           data={userActions}
-           renderItem={UserLink}
-         />
+         {isLoggedIn ? <Balance /> : <LoginForm />}
+         {isLoggedIn &&
+           <List
+             className={styles.userActionLinks}
+             data={userActions}
+             renderItem={UserLink}
+           />
+         }
        </div>
 
        <List
          className={styles.list}
          data={links}
-         renderItem={NavLink}
+         renderItem={NavbarLink}
        />
      </nav>
    );

@@ -554,7 +554,8 @@ h3, .h3 {
 }
 
 h4, .h4 {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
+  font-weight: 200;
 }
 
 h5, .h5 {
@@ -2641,6 +2642,7 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
   font-weight: normal;
   line-height: 1.25;
   text-align: center;
+  text-transform: uppercase;
   white-space: nowrap;
   vertical-align: middle;
   -webkit-user-select: none;
@@ -2673,10 +2675,6 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
 
 .btn:active, .btn.active {
   background-image: none;
-}
-
-.btn:not(:first-of-type) {
-    margin-left: 1em;
 }
 
 a.btn.disabled,
@@ -3073,7 +3071,6 @@ fieldset[disabled] a.btn {
 .btn-lg, .btn-group-lg > .btn {
   padding: 1.1rem 3rem;
   font-size: 90%;
-  text-transform: uppercase;
   border-radius: 0.3rem;
 }
 
@@ -3081,6 +3078,14 @@ fieldset[disabled] a.btn {
   padding: 0.25rem 0.5rem;
   font-size: 0.875rem;
   border-radius: 0.2rem;
+}
+
+.btn-xsm, .btn-group-xsm > .btn {
+  padding: 0.2rem 1rem;
+  font-size: 0.6rem;
+  line-height: 1;
+  border-radius: 0.3rem;
+  height: 30px;
 }
 
 .btn-block {

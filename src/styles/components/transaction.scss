@@ -25,10 +25,6 @@
   }
   .transaction-memo {
     margin-left: 1.25rem;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    min-height: 40px;
     p {
       margin: 0;
     }
@@ -37,20 +33,12 @@
     width: 160px;
     text-align: right;
     .transaction-icon {
-      display: flex;
-      justify-content: center;
-      flex-direction: column;
-      min-height: 40px;
       margin-left: .25rem;
       font-size: 80%;
     }
     .transaction-amount {
       margin-bottom: 0;
       font-size: 120%;
-      display: flex;
-      justify-content: center;
-      flex-direction: column;
-      min-height: 40px;
     }
   }
 }

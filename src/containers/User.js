@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Icon } from '../components';
 
 const User = ({
-  className = 'meta',
+  className = 'meta hidden-sm-down',
   greeting,
   link = {
     to: 'www.website.com',

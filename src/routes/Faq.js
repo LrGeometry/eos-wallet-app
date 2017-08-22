@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import { Helmet } from 'react-helmet';
 
-class About extends Component {
+class Faq extends Component {
   render() {
     return (
       <div>
         <Helmet>
-          <title>About</title>
+          <title>FAQs</title>
         </Helmet>
-        <h2>About</h2>
+        <h1>FAQs</h1>
       </div>
     );
   }
 }
 
-export default About;
+export default Faq;
