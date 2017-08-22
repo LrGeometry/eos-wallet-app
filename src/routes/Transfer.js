@@ -22,8 +22,18 @@ class Transfer extends Component {
                 <p>Move funds to another EOS account.</p>
                 <TransferForm />
               </div>
-              <div className="section">
-                <Transactions />
+              <div className="d-flex justify-content-between items-center">
+                <div>
+                  <h3>Transaction History</h3>
+                </div>
+                <div>
+                  <small className="text-muted"><a>View All</a></small>
+                </div>
+              </div>
+              <div className="row">
+                <div className="col-12">
+                  <Transactions />
+                </div>
               </div>
             </div>
             <div className="col-12 col-lg-5">
