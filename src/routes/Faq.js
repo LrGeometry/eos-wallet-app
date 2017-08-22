@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Helmet } from 'react-helmet';
 
-class Faqs extends Component {
+class Faq extends Component {
   render() {
     return (
       <div>
@@ -14,4 +14,4 @@ class Faqs extends Component {
   }
 }
 
-export default Faqs;
+export default Faq;

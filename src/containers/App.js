@@ -7,7 +7,7 @@ import {
   Navbar } from '../components';
 import {
   About,
-  Faqs,
+  Faq,
   NoMatch,
   Permissions,
   Preferences,
@@ -32,6 +32,11 @@ const Scene = ({
     {children}
   </div>
 );
+
+const modalRoutes = Object.freeze([
+  '/create-account',
+  '/login',
+]);
 
 class App extends Component {
   static defaultProps = {
@@ -63,9 +68,33 @@ class App extends Component {
     }
   }
 
+  constructor(props, context) {
+    super(props, context);
+
+    this.previousLocation = {
+      pathname: '/about',
+      hash: '',
+      search: '',
+    };
+  }
+
+  componentWillUpdate(nextProps) {
+    const { location } = this.props;
+
+    // set previousLocation if props.location is not modal
+    if (
+      nextProps.history.action !== 'POP' &&
+      (!location.state || !location.state.modal)
+    ) {
+      this.previousLocation = this.props.location;
+    }
+  }
+
   render() {
-    const { className, location, modalRoutes } = this.props;
+    const { className, location } = this.props;
     const isModal = modalRoutes.some(r => new RegExp(r).test(location.pathname));
+
+    location.state = { modal: isModal };
 
     return (
       <main className={className}>
@@ -74,8 +103,8 @@ class App extends Component {
         <Header />
         <div className="flex-fill">
           <Navbar />
-          <Switch location={isModal ? this.previousLocation : location}>
-            <Scene>
+          <Scene>
+            <Switch location={isModal ? this.previousLocation : location}>
               <Route
                 component={Transfer}
                 exact
@@ -98,8 +127,8 @@ class App extends Component {
                 path="/about"
               />
               <Route
-                component={Faqs}
-                path="/faqs"
+                component={Faq}
+                path="/faq"
               />
               <Route
                 component={Users}
@@ -112,11 +141,11 @@ class App extends Component {
               <Route
                 component={NoMatch}
               />
-
-              <Footer />
-            </Scene>
-          </Switch>
+            </Switch>
+            <Footer />
+          </Scene>
         </div>
+
         {isModal ?
           <Modal
             isOpen

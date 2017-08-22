@@ -1,5 +1,5 @@
 export { default as About } from './About';
-export { default as Faqs } from './Faqs';
+export { default as Faq } from './Faq';
 export { default as NoMatch } from './NoMatch';
 export { default as Permissions } from './Permissions';
 export { default as Preferences } from './Preferences';
