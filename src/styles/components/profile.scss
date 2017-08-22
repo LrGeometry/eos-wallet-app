@@ -1,0 +1,37 @@
+.about {
+  .profile-pic {
+    width: 150px;
+    min-width: 150px;
+    height: 150px;
+    border: 8px solid #D75F4C;
+    @include border-radius(75px);
+  }
+  .profile-meta {
+    .username {
+      font-size: 140%;
+    }
+    .location {
+      font-size: 110%;
+    }
+    .website {
+      color: $blue;
+    }
+  }
+}
+
+.snapshot {
+  .nav-primary {
+    text-transform: uppercase;
+    font-size: 90%;
+  }
+  .balance {
+    font-size: 350%;
+    font-weight: 100;
+    line-height: 3.25rem;
+  }
+  .change {
+    color: #BEDF5D;
+    font-size: 110%;
+    line-height: 1.25rem;
+  }
+}
