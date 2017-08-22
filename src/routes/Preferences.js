@@ -15,10 +15,10 @@ class Preferences extends Component {
           </div>
         </div>
         <div className="row">
-          <div className="col-6">
+          <div className="col-12 col-lg-6">
             <PreferencesForm />
           </div>
-          <div className="col-6">
+          <div className="hidden-md-down col-lg-6">
             <h5>Profile Preview</h5>
             <div className="module">
               <div className="d-flex flex-row items-center">
