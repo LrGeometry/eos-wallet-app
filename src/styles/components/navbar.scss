@@ -2,6 +2,12 @@
   background: $bg-grey-60;
   min-height: 80px;
   width: 275px;
+  @media (max-width: 1200px) {
+    width: 225px;
+  }
+  @media (max-width: 767px) {
+    display: none;
+  }
   .navbar-links {
     list-style: none;
     padding: 0;

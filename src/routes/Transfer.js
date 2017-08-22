@@ -17,7 +17,7 @@ class Transfer extends Component {
             </div>
           </div>
           <div className="row">
-            <div className="col-12 col-md-7">
+            <div className="col-12 col-lg-7">
               <div className="section">
                 <p>Move funds to another EOS account.</p>
                 <TransferForm />
@@ -26,7 +26,7 @@ class Transfer extends Component {
                 <Transactions />
               </div>
             </div>
-            <div className="col-12 col-md-5">
+            <div className="col-12 col-lg-5">
               <h5>What are EOS tokens?</h5>
               <div className="module">
                 <p>

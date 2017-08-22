@@ -10,11 +10,11 @@ class Users extends Component {
           <title>Users</title>
         </Helmet>
         <div className="container-full">
-          <div className="d-flex justify-content-end">
-            <div className="mr-auto align-self-center">
+          <div className="d-md-flex justify-content-between items-center">
+            <div>
               <h2>Users</h2>
             </div>
-            <div className="align-self-center">
+            <div className="items-center mb-2 mb-md-0">
               <div className="module-search">
                 <input
                   className="form-control"
