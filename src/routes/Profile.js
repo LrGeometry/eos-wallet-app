@@ -4,6 +4,10 @@ import {
   Transactions,
 } from '../containers';
 
+import {
+  Balance,
+} from '../components';
+
 class Profile extends Component {
   render() {
     return (
@@ -31,9 +35,7 @@ class Profile extends Component {
               </div>
               <div className="col-12 col-lg-4 mt-lg-0 mt-4">
                 <div className="module snapshot text-lg-right text-left">
-                  <div className="nav-primary">EOS</div>
-                  <div className="balance">0.500</div>
-                  <div className="change">+27.600</div>
+                  <Balance />
                 </div>
               </div>
             </div>
