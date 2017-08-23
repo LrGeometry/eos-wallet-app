@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { List, Icon } from '../components';
-import TransactionsQuery from '../query/transactions';
+import { List, Icon } from '../../components';
+import TransactionsQuery from '../../query/transactions';
 
 const Transaction = ({ date, sender, memo, amount }) => (
   <div className="transaction d-flex flex-row">

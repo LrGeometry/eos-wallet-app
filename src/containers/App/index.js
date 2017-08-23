@@ -6,8 +6,8 @@ import { renderRoutes } from 'react-router-config';
 import {
   Header,
   Footer,
-  Navbar } from '../components';
-import routes from '../routes';
+  Navbar } from '../../components';
+import routes from '../../routes';
 
 const normalRoutes = routes[0].routes.filter(r => !r.isModal);
 const modalRoutes = routes[0].routes.filter(r => r.isModal);
