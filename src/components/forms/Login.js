@@ -9,7 +9,7 @@ class Login extends Component {
 
     return (
       <form>
-        <p>This operation requires your Active Key or Master password.</p>
+        <p className={`${!modal && 'd-none'}`}>This operation requires your Active Key or Master password.</p>
         <fieldset className="form-group">
           <label htmlFor="username">Username</label>
           <div clasName="input-container">
@@ -47,15 +47,15 @@ class Login extends Component {
 
         <div className={`button-group ${modal && 'modal-cta'}`}>
         <div className="row col-12 no-gutters p-0">
-          <div className="col-sm-auto col-12 pl-0 pr-sm-2 pr-0 mb-3">
+          <div className={`col-12 pl-0 ${modal ? 'col-sm-auto pr-sm-2 mb-3' : 'pr-sm-0 mb-1'}`}>
             <button
-              className="btn btn-primary btn-lg btn-block"
+              className={`btn btn-primary btn-block ${modal ? 'btn-lg' : 'btn-md'}`}
               type="submit"
             >
               Login
             </button>
           </div>
-          <div className="col-sm-auto col-12 p2-2 pl-sm-2 pl-0 mb-3">
+          <div className={`${modal ? 'col-sm-auto col-12 p2-2 pl-sm-2 pl-0 mb-3' : 'd-none'}`}>
             {modal &&
               <button
                 className="btn btn-secondary btn-lg btn-block"
@@ -64,7 +64,7 @@ class Login extends Component {
                 Cancel
               </button>}
             </div>
-            <div className="col-12 text-center text-sm-left">
+            <div className={`col-12 ${modal ? 'text-left' : 'text-center'}`}>
               <Link to="/create-account" className="text-link">Don't have an account?</Link>
             </div>
           </div>
