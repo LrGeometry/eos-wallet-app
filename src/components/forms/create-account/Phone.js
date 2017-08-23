@@ -17,7 +17,6 @@ const Phone = ({ handleSubmit, submitting }) => (
             id="phone"
             name="phone"
             required
-            type="phone"
           />
         </div>
       </div>
