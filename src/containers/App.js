@@ -29,31 +29,6 @@ const Scene = ({
 class App extends Component {
   static defaultProps = {
     className: 'app container-fluid p-0 row no-gutters d-flex',
-    modalRoutes: [
-      '/create-account',
-      '/login',
-    ],
-  }
-
-  constructor(props, context) {
-    super(props, context);
-
-    this.previousLocation = {
-      pathname: '/',
-      hash: '',
-      search: '',
-    };
-  }
-
-  componentWillUpdate(nextProps) {
-    const { location } = this.props;
-    // set previousLocation if props.location is not modal
-    if (
-      nextProps.history.action !== 'POP' &&
-      (!location.state || !location.state.modal)
-    ) {
-      this.previousLocation = this.props.location;
-    }
   }
 
   render() {
