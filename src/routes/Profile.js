@@ -23,9 +23,9 @@ class Profile extends Component {
           </div>
           <div className="section">
             <div className="row">
-              <div className="col-12 col-lg-8 d-flex flex-row about">
+              <div className="col-12 col-lg-8 d-sm-inline-flex flex-row about">
                 <div className="profile-pic" />
-                <div className="profile-meta mt-2 ml-4">
+                <div className="profile-meta mt-2 ml-0 ml-sm-4">
                   <div className="username">username</div>
                   <div className="location">Location</div>
                   <div className="website">website</div>
