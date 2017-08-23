@@ -7,7 +7,7 @@ import {
 } from './';
 
 const NavbarLink = ({
-  className = 'col-link p3',
+  className = 'col-link px-4 py-3',
   text,
   ...props }) => (
   <NavLink
@@ -19,7 +19,7 @@ const NavbarLink = ({
 );
 
 const UserLink = ({
-  className = 'col-link p3',
+  className = 'col-link px-4 py-3',
   iconClass,
   text,
   ...props }) => (
@@ -44,9 +44,9 @@ class Navbar extends Component {
    },
    isLoggedIn: true,
    userActions: [
-     { to: '/transfer', text: 'Transfer', iconClass: 'icon-eos_icons_transfer', activeClassName },
-     { to: '/transactions', text: 'Transaction History', iconClass: 'icon-eos_icons_history', activeClassName },
-     { to: '/permissions', text: 'Permissions', iconClass: 'icon-eos_icons_permissions', activeClassName },
+     { to: '/transfer', text: 'Transfer', iconClass: 'icon-eos_icons_transfer mr-2', activeClassName },
+     { to: '/transactions', text: 'Transaction History', iconClass: 'icon-eos_icons_history mr-2', activeClassName },
+     { to: '/permissions', text: 'Permissions', iconClass: 'icon-eos_icons_permissions mr-2', activeClassName },
    ],
    links: [
      { to: '/users', text: 'Users', activeClassName },

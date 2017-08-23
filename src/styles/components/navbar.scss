@@ -22,9 +22,9 @@
     display: flex;
     color: #fff;
     text-decoration: none;
-    padding: 1.25em;
     position: relative;
     font-size: 90%;
+    text-transform: uppercase;
     &:after {
       position: absolute;
       bottom: 0;
@@ -53,15 +53,14 @@
           top: 0;
           width: 0; 
           height: 0; 
-          border-top: 29px solid transparent;
-          border-bottom: 29px solid transparent;
+          border-top: 27px solid transparent;
+          border-bottom: 27px solid transparent;
           border-left: 8px solid $blue;
           z-index: 1;
         }
       }
     span {
       line-height: 1.5;
-      margin-right: .5em;
       color: $blue;
     }
   }
@@ -72,8 +71,10 @@
   .-is-logged-in {
     background: $bg-grey-40;
     position: relative;
+    a {
+      text-transform: capitalize;
+    }
     .account-info {
-      padding: 1.25rem;
       .balance { 
         font-size: 375%;
         font-weight: 100;
@@ -98,6 +99,30 @@
           width: 100%;
           @include gradient($bg-grey-40, #5B6168, left);
         }
+      }
+    }
+    form {
+      padding: 1.5em;
+      .form-group {
+        margin-bottom: .75rem;
+        label {
+          font-size: 90%;
+        }
+        input[type="text"] {
+          padding: .65rem 1rem;
+          &.prefix {
+            padding-left: 3.5rem;
+          }
+        }
+        .input-prefix:before {
+          width: 38px;
+          height: 41px;
+          font-size: 100%;
+          line-height: 2.5rem;
+        }
+      }
+      .text-link {
+        font-size: 80%;
       }
     }
   }

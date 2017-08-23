@@ -2255,7 +2255,7 @@ pre code {
   background-image: none;
   -webkit-background-clip: padding-box;
           background-clip: padding-box;
-  border: 1px solid rgba(0, 0, 0, 0.15);
+  border: 0;
   border-radius: 0.25rem;
   -webkit-transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;
   transition: border-color ease-in-out 0.15s, -webkit-box-shadow ease-in-out 0.15s;
@@ -3071,6 +3071,12 @@ fieldset[disabled] a.btn {
 .btn-lg, .btn-group-lg > .btn {
   padding: 1.1rem 3rem;
   font-size: 90%;
+  border-radius: 0.3rem;
+}
+
+.btn-md, .btn-group-lg > .btn {
+  padding: .75rem 2rem;
+  font-size: 80%;
   border-radius: 0.3rem;
 }
 
