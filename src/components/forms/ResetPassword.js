@@ -27,12 +27,15 @@ class ResetPassword extends Component {
             type="text"
           />
         </fieldset>
-
-        <button
-          className="btn btn-primary btn-lg"
-          type="submit"
-        >Update Password
-        </button>
+        <div className="row col-12 no-gutters p-0">
+          <div className="col-sm-auto col-12 pl-0 pr-0">
+           <button
+             className="btn btn-primary btn-lg btn-block"
+             type="submit"
+           >Update Password
+           </button>
+          </div>
+        </div>
       </form>
     );
   }

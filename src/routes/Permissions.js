@@ -16,12 +16,17 @@ class Permissions extends Component {
           <div className="keystore">
             <h6>Active</h6>
             <div className="list-item d-lg-flex justify-content-between items-center">
-              <div>
-                <img
-                  alt=""
-                  src=""
-                />
-                <span>IEfja89uewaejwfawe0fjaewf98hwf8ejfhefwfebfaiuewfeuifh</span>
+              <div className="d-lg-flex justify-content-between items-center">
+                <div>
+                  <img
+                    className="qr-code mr-3 mb-2 mb-lg-0"
+                    alt=""
+                    src="images/qr_code.png"
+                  />
+                </div>
+                <div>
+                  <span className="token">IEfja89uewaejwfawe0fjaewf98hwf8ejfhefwfebfaiuewfeuifh</span>
+                </div>
               </div>
               <button className="btn btn-primary btn-xsm mt-2 mt-lg-0">Show Private Key</button>
             </div>
@@ -32,12 +37,17 @@ class Permissions extends Component {
           <div className="keystore">
             <h6>Owner</h6>
             <div className="list-item d-lg-flex justify-content-between items-center">
-              <div>
-                <img
-                  alt=""
-                  src=""
-                />
-                <span>IEfja89uewaejwfawe0fjaewf98hwf8ejfhefwfebfaiuewfeuifh</span>
+              <div className="d-lg-flex justify-content-between items-center">
+                <div>
+                  <img
+                    className="qr-code mr-3 mb-2 mb-lg-0"
+                    alt=""
+                    src="images/qr_code.png"
+                  />
+                </div>
+                <div>
+                  <span className="token">IEfja89uewaejwfawe0fjaewf98hwf8ejfhefwfebfaiuewfeuifh</span>
+                </div>
               </div>
               <button className="btn btn-primary btn-xsm mt-2 mt-lg-0">Show Private Key</button>
             </div>
