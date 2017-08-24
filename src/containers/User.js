@@ -16,8 +16,9 @@ const User = ({
     location: 'location',
     link: 'url',
     logout: 'logout',
-    icon: 'user-icon',
     status: 'status',
+    divider: 'divider px-2',
+    logoutIcon: 'icon icon-eos_icons_logout',
   },
 }) => (
   <div className="account-info">
@@ -43,8 +44,8 @@ const User = ({
         </Link>
         {greeting &&
           <span>
-            <span className="divider px-2">|</span> 
-            <Link to="/logout" className={styles.logout}><span className="icon icon-eos_icons_logout" /></Link>
+            <span className={styles.divider}>|</span> 
+            <Link to="/logout" className={styles.logout}><span className={styles.logoutIcon} /></Link>
           </span>
         }
       </div>
