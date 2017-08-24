@@ -39,6 +39,15 @@
       color: $blue-grey;
       font-size: 100%;
     }
+    .divider {
+      color: $blue-grey;
+    }
+  }
+  .logout {
+    .icon {
+      vertical-align: middle;
+      color: $blue;
+    }
   }
   .thumbnail {
     position: absolute;
