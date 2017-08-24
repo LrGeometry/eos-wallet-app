@@ -4,16 +4,16 @@
   }
   .transaction-date {
     text-align: center;
-    margin-right: 1.25rem;
     .date-month {
       font-size: 80%;
       text-transform: uppercase;
       font-weight: 200;
+      line-height: 1em;
     }
     .date-day {
       font-size: 130%;
       font-weight: 200;
-      line-height: 90%;
+      line-height: 1em;
     }
   }
   .transaction-thumbnail {
@@ -24,9 +24,9 @@
     @include border-radius(20px);
   }
   .transaction-memo {
-    margin-left: 1.25rem;
     p {
       margin: 0;
+      line-height: 1.25em;
     }
   }
   .transaction-amount-container {
