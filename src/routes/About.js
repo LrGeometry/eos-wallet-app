@@ -8,7 +8,18 @@ class About extends Component {
         <Helmet>
           <title>About</title>
         </Helmet>
-        <h2>About</h2>
+        <div className="container-full">
+          <div>
+            <div>
+              <h2>About</h2>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-12">
+              Content
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
