@@ -8,7 +8,18 @@ class Faq extends Component {
         <Helmet>
           <title>FAQs</title>
         </Helmet>
-        <h1>FAQs</h1>
+        <div className="container-full">
+          <div>
+            <div>
+              <h2>FAQs</h2>
+            </div>
+          </div>
+          <div className="row">
+            <div className="col-12">
+              Content
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
