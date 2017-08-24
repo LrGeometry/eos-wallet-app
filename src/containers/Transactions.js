@@ -12,11 +12,11 @@ const Transaction = ({ date, sender, memo, amount }) => (
       </div>
 
       <Icon
-        className="transaction-thumbnail"
+        className="transaction-thumbnail ml-3 hidden-md-down"
         url={sender.icon}
       />
 
-      <div className="transaction-memo">
+      <div className="transaction-memo ml-3">
         <p>{memo}</p>
       </div>
     </div>
