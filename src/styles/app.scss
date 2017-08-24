@@ -44,8 +44,6 @@
   .module {
     background-color: $bg-grey-60;
     width: 100%;
-    padding: 1.25rem;
-    margin-bottom: 2rem;
     @include border-radius(12px);
     p {
       margin-bottom: 0;
