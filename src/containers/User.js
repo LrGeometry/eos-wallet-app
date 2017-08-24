@@ -42,7 +42,11 @@ const User = ({
         >{link.to}
         </Link>
         {greeting &&
-                    <Link className={styles.logout}><Icon>Logout</Icon></Link>}
+          <span>
+            <span className="divider px-2">|</span> 
+            <Link to="/logout" className={styles.logout}><span className="icon icon-eos_icons_logout" /></Link>
+          </span>
+        }
       </div>
 
       <Icon
