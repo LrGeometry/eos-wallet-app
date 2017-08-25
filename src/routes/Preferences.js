@@ -21,12 +21,12 @@ class Preferences extends Component {
             </div>
             <div className="hidden-md-down col-lg-6">
               <h5>Profile Preview</h5>
-              <div className="module">
+              <div className="module p-4">
                 <div className="d-flex flex-row items-center">
                   <img alt="" className="user-thumbnail" src="images/male_2.jpg" />
                   <div className="profile-meta">
                     <div className="username">
-                      Username
+                      Display Name
                     </div>
                     <div className="location">
                       location

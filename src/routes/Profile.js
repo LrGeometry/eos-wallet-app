@@ -18,7 +18,7 @@ class Profile extends Component {
         <div className="container-full">
           <div className="row">
             <div className="col-12">
-              <h2>Display Name</h2>
+              <h2>Username</h2>
             </div>
           </div>
           <div className="section">
@@ -26,7 +26,7 @@ class Profile extends Component {
               <div className="col-12 col-lg-8 d-sm-inline-flex flex-row about">
                 <div className="profile-pic" />
                 <div className="profile-meta mt-2 ml-0 ml-sm-4">
-                  <div className="username">username</div>
+                  <div className="username">Display Name</div>
                   <div className="location">Location</div>
                   <div className="website">website</div>
                   <div className="bio mt-1">Wild-man, Gardener, Encourager, Homesteader, Lyricist, Deep Thinker, Papa, Humorist, Husband

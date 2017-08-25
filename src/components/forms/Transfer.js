@@ -60,7 +60,7 @@ class TransferForm extends Component {
 
        <fieldset className="form-group">
          <div>
-           <small className="form-text text-muted"><a>Balance: {balance} EOS</a></small>
+           <small className="form-text text-muted"><a>Use Full Balance</a></small>
            <label htmlFor="amount">Amount</label>
            <input
              aria-describedby="amount"
