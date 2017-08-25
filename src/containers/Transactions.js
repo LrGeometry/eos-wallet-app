@@ -17,7 +17,7 @@ const Transaction = ({ date, sender, memo, amount }) => (
       />
 
       <div className="transaction-data ml-3">
-        <p className="transaction-sender mb-0"><a>{sender.name}</a></p>
+        <p className="transaction-sender mb-1"><a>{sender.name}</a></p>
         <p className="transaction-memo mb-0">{memo}</p>
       </div>
     </div>
