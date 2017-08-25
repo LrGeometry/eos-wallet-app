@@ -23,7 +23,7 @@ const Transaction = ({ date, sender, memo, amount }) => (
     </div>
 
     <div className="transaction-amount-container d-flex flex-row-reverse items-center">
-      <Icon className="transaction-icon icon-eos_icons_transfer_to" />
+      <Icon className="transaction-icon icon-eos_icons_transfer_to down" />
       <p className="transaction-amount">{amount}</p>
     </div>
   </div>
