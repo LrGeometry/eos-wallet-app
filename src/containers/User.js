@@ -6,7 +6,7 @@ const User = ({
   className = 'meta hidden-sm-down',
   greeting,
   link = {
-    to: 'www.website.com',
+    to: '/preferences',
   },
   location,
   name = 'Display Name',
@@ -41,7 +41,7 @@ const User = ({
       <div>
         <Link
           className={styles.link}
-          to="/preferences"
+          to={link.to}
         >Customize your profile
         </Link>
         {greeting &&
