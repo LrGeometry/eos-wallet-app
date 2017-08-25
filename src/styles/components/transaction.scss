@@ -51,7 +51,13 @@
     }
     .transaction-icon {
       margin-left: .25rem;
-      font-size: 80%;
+      font-size: 70%;
+      &.up {
+        color: $green;
+      }
+      &.down {
+        color: $red;
+      }
     }
     .transaction-amount {
       margin-bottom: 0;
