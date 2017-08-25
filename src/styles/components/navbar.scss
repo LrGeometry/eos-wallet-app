@@ -41,6 +41,9 @@
       text-decoration: none;
       color: inherit;
     }
+    &:hover {
+        background: darken($bg-grey-60, 2%);
+      }
     &.active {
         background: $blue;
         span {
@@ -98,6 +101,12 @@
           height: 1px;
           width: 100%;
           @include gradient($bg-grey-40, #5B6168, left);
+        }
+        &:hover {
+          background: darken($bg-grey-40, 2%);
+        }
+        &.active:hover {
+          background: $blue;
         }
       }
     }

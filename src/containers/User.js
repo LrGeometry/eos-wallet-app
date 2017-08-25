@@ -6,7 +6,7 @@ const User = ({
   className = 'meta hidden-sm-down',
   greeting,
   link = {
-    to: 'www.website.com',
+    to: 'Customize your profile',
   },
   location,
   name = 'Display Name',
@@ -22,14 +22,16 @@ const User = ({
   },
 }) => (
   <div className="account-info">
-    <div className="thumbnail">
-      <div className="settings icon-eos_icons_settings" />
-      <img
-        alt=""
-        className="user-thumbnail"
-        src="images/male_2.jpg"
-      />
-    </div>
+    <Link to="/preferences">
+      <div className="thumbnail">
+        <div className="settings icon-eos_icons_settings" />
+        <img
+          alt=""
+          className="user-thumbnail"
+          src="images/male_2.jpg"
+        />
+      </div>
+    </Link>
     <div className={className}>
 
       <p className={styles.displayName}>{greeting}{name}</p>
