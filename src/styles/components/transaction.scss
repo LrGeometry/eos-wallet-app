@@ -1,4 +1,8 @@
 .transaction {
+  a:hover {
+    text-decoration: none;
+    color: inherit;
+  }
   .transaction-meta {
     width: calc(100% - 160px);
   }
@@ -23,10 +27,17 @@
     border: 3px solid $orange;
     @include border-radius(20px);
   }
-  .transaction-memo {
-    p {
-      margin: 0;
-      line-height: 1.25em;
+  .transaction-data {
+    margin-left: 1.25rem;
+    .transaction-sender {
+      line-height: 1rem;
+      a {
+        color: $blue;
+      }
+    }
+    .transaction-memo {
+      font-size: 90%;
+      color: $light-grey;
     }
   }
   .transaction-amount-container {

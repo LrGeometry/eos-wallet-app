@@ -5,16 +5,16 @@ import UsersQuery from '../query/users';
 import { observer } from 'mobx-react';
 
 const User = ({ url, name, status, icon }) => (
-  <div className="user transaction">
+  <div className="transaction">
     <Link to={url}>
       <div className="user-meta d-flex flex-row items-center">
         <Icon
           className="transaction-thumbnail"
           url={icon}
         />
-        <div className="user-info">
-          <div className="user-name">{name}Demo Name</div>
-          <div className="user-memo">{status}</div>
+        <div className="transaction-data ml-3">
+          <div className="transaction-sender mb-0"><a>{name}Demo Name</a></div>
+          <div className="transaction-memo mb-0">{status}</div>
         </div>
       </div>
     </Link>
