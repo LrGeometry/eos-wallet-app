@@ -7,9 +7,7 @@ import createHistory from 'history/createBrowserHistory';
 // TODO assess if needed
 import registerServiceWorker from './func/registerServiceWorker';
 
-if (process.env.ENV !== 'test') {
-  import('./styles/index.scss');
-}
+import './styles/index.scss';
 
 const history = createHistory();
 
