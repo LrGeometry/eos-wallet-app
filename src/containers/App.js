@@ -66,7 +66,7 @@ class App extends Component {
   }
 
   render() {
-    const { className, location } = this.props;
+    const { className, location = this.previousLocation } = this.props;
     const isModal = modalRoutes.some(r => new RegExp(r).test(location.pathname));
 
     location.state = { modal: isModal };
