@@ -5,6 +5,9 @@
   }
   .transaction-meta {
     width: calc(100% - 160px);
+    @media (max-width: 767px) {
+      width: calc(100% - 120px);
+    }
   }
   .transaction-date {
     text-align: center;
@@ -43,6 +46,9 @@
   .transaction-amount-container {
     width: 160px;
     text-align: right;
+    @media (max-width: 767px) {
+      width: 120px;
+    }
     .transaction-icon {
       margin-left: .25rem;
       font-size: 80%;
