@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router';
+import { Redirect, Route, Switch } from 'react-router';
 import { Helmet } from 'react-helmet';
 import {
   Header,
@@ -83,19 +83,31 @@ class App extends Component {
               <Route
                 component={Transfer}
                 exact
-                path="/(|transfer)/"
+                path="/"
+              />
+              <Redirect
+                from="/transfer"
+                to="/"
               />
               <Route
                 component={TransactionHistory}
                 path="/transactions"
               />
               <Route
-                component={Permissions}
-                path="/permissions"
+                component={Users}
+                path="/users"
               />
               <Route
                 component={Profile}
                 path="/user/:id"
+              />
+              <Route
+                component={Permissions}
+                path="/permissions"
+              />
+              <Route
+                component={Preferences}
+                path="/preferences"
               />
               <Route
                 component={About}
@@ -104,14 +116,6 @@ class App extends Component {
               <Route
                 component={Faq}
                 path="/faq"
-              />
-              <Route
-                component={Users}
-                path="/users"
-              />
-              <Route
-                component={Preferences}
-                path="/preferences"
               />
               <Route
                 component={NoMatch}
