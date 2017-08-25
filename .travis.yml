@@ -8,8 +8,8 @@ cache:
 
 script:
   - npm test
-  - npm run build
   - unset CI
+  - npm run build
 
 notifications:
   slack:
