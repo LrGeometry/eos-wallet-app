@@ -1,6 +1,6 @@
-const LOGIN = 'LOGIN';
-const LOGIN_FAILURE = 'LOGIN_FAILURE';
-const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+const TRY_LOGIN = 'TRY_LOGIN';
+const FAIL_LOGIN = 'FAIL_LOGIN';
+const SUCCEED_LOGIN = 'SUCCEED_LOGIN';
 
 const initialState = {
   user: {
@@ -13,17 +13,17 @@ const initialState = {
 
 export function reducer(state = initialState, action = {}) {
   switch (action.type) {
-    case LOGIN:
+    case TRY_LOGIN:
       return {
         ...state,
         user: 'LOADING',
       };
-    case LOGIN_FAILURE:
+    case FAIL_LOGIN:
       return {
         ...state,
         user: 'FAILED',
       };
-    case LOGIN_SUCCESS:
+    case SUCCEED_LOGIN:
       return {
         ...state,
         user: action.user,
@@ -31,4 +31,40 @@ export function reducer(state = initialState, action = {}) {
     default:
       return state;
   }
+}
+
+function tryLogin() {
+  return {
+    type: TRY_LOGIN,
+  };
+}
+
+function failLogin({ errors }) {
+  return {
+    type: FAIL_LOGIN,
+    errors,
+  };
+}
+
+function succeedLogin({ user }) {
+  return {
+    type: SUCCEED_LOGIN,
+    user,
+  };
+}
+
+export function getLogin(credentails) {
+  return async (dispatch) => {
+    dispatch(tryLogin(credentials));
+
+    fetch('/login')
+      .then((user) => {
+        dispatch(succeedLogin({
+          user,
+        }));
+      })
+      .catch(() => {
+        dispatch(failLogin({ errors: e }));
+      });
+  };
 }
