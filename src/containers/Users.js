@@ -13,7 +13,7 @@ const User = ({ url, name, status, icon }) => (
           url={icon}
         />
         <div className="transaction-data ml-3">
-          <div className="transaction-sender mb-0"><a>{name}Demo Name</a></div>
+          <div className="transaction-sender mb-1"><a>{name}Demo Name</a></div>
           <div className="transaction-memo mb-0">{status}</div>
         </div>
       </div>
