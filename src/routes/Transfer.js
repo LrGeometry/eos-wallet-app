@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link, TransferForm } from '../components';
 import { Transactions } from '../containers';
 import { Helmet } from 'react-helmet';
