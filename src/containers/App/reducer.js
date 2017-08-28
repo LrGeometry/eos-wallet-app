@@ -3,17 +3,31 @@ const LOGIN_FAILURE = 'LOGIN_FAILURE';
 const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 
 const initialState = {
-  user: null,
+  user: {
+    name: 'Display Name',
+    website: 'website',
+    status: 'something',
+    icon: '/images/male_2.png',
+  },
 };
 
 export function reducer(state = initialState, action = {}) {
   switch (action.type) {
     case LOGIN:
-      return { user: 'LOADING' };
+      return {
+        ...state,
+        user: 'LOADING',
+      };
     case LOGIN_FAILURE:
-      return { user: 'FAILED' };
+      return {
+        ...state,
+        user: 'FAILED',
+      };
     case LOGIN_SUCCESS:
-      return { user: action.user };
+      return {
+        ...state,
+        user: action.user,
+      };
     default:
       return state;
   }
