@@ -35,9 +35,9 @@ class Transactions extends Component {
 
  dataTransform(data) {
    return data.map((item) => {
-      if (item.date.month) {
-        return item;
-      }
+     if (item.date.month) {
+       return item;
+     }
 
      const date = new Date(item.date);
      item.date = {

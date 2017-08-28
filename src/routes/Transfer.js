@@ -8,8 +8,8 @@ class Transfer extends Component {
     return (
       <div>
         <Helmet>
-        <title>Transfer</title>
-      </Helmet>
+          <title>Transfer</title>
+        </Helmet>
         <div className="container-full">
           <div className="row">
             <div className="col-12">

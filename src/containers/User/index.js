@@ -46,7 +46,7 @@ const User = ({
         </Link>
         {greeting &&
           <span>
-            <span className={styles.divider}>|</span> 
+            <span className={styles.divider}>|</span>
             <Link to="/logout" className={styles.logout}><span className={styles.logoutIcon} /></Link>
           </span>
         }
