@@ -51,7 +51,6 @@ class App extends Component {
               {renderRoutes(normalRoutes)}
             </Switch>
 
-            <Values form="transfer" />
             <Footer />
           </Scene>
         </div>
