@@ -1,9 +1,36 @@
+
+body {
+  @media (max-width: 767px) {
+    overflow-x: hidden;
+  }
+}
 .app {
   min-height: 100vh;
   display: flex;
   flex: 1;
   align-items: stretch;
   flex-direction: column;
+  &.open {
+    .main-content {
+      left: 275px;
+    }
+    .menu-closer {
+      opacity: .8;
+      visibility: visible;
+    }
+  }
+  .menu-closer {
+    width: 100%;
+    height: 100%;
+    background: $bg-grey-100;
+    @include transition(opacity .4s, visibility .4s);
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 2;
+  }
 }
 
 .main-content {
@@ -18,6 +45,10 @@
   @media (max-width: 767px) {
     position: absolute;
     width: 100%;
+    height: 100%;
+    height: 100%;
+    left: 0;
+    @include transition(left .4s ease);
     padding: 1.5rem;
     z-index: 1;
   }

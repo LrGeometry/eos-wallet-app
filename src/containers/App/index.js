@@ -64,13 +64,14 @@ class App extends Component {
     location.state = { modal: isModal };
 
     return (
-      <main className={`${className} ${isOpen ? 'xyz' : 'zzz'}`}>
+      <main className={`${className} ${isOpen ? 'open' : 'closed'}`}>
         <Helmet titleTemplate="%s | EOS Wallet" defaultTitle="EOS Wallet" />
 
         <Header />
         <div className="flex-fill">
           <Navbar />
           <Scene>
+            <div className="menu-closer" />
             <Switch location={isModal ? this.previousLocation : location}>
               {renderRoutes(normalRoutes)}
             </Switch>

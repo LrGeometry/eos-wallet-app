@@ -11,7 +11,7 @@ const Header = ({
 }) => (
   <header className={className}>
     <div
-      className={`mobile-nav mr-2 hidden-md-up ${isOpen ? 'open' : 'closed'}`}
+      className="mobile-nav mr-2 hidden-md-up"
       onClick={onMenuClick}
     >
       <span className="icon-eos_icons_menu" />
