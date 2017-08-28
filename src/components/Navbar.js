@@ -12,6 +12,7 @@ const NavbarLink = ({
   ...props }) => (
   <NavLink
     className={className}
+    exact
     {...props}
   >
     {text}
@@ -25,6 +26,7 @@ const UserLink = ({
   ...props }) => (
   <NavLink
     className={className}
+    exact
     {...props}
   >
     <span className={iconClass} />
@@ -44,9 +46,24 @@ class Navbar extends Component {
    },
    isLoggedIn: true,
    userActions: [
-     { to: '/transfer', text: 'Transfer', iconClass: 'icon-eos_icons_transfer mr-2', activeClassName },
-     { to: '/transactions', text: 'Transaction History', iconClass: 'icon-eos_icons_history mr-2', activeClassName },
-     { to: '/permissions', text: 'Permissions', iconClass: 'icon-eos_icons_permissions mr-2', activeClassName },
+     {
+       to: '/',
+       text: 'Transfer',
+       iconClass: 'icon-eos_icons_transfer mr-2',
+       activeClassName,
+     },
+     {
+       to: '/transactions',
+       text: 'Transaction History',
+       iconClass: 'icon-eos_icons_history mr-2',
+       activeClassName,
+     },
+     {
+       to: '/permissions',
+       text: 'Permissions',
+       iconClass: 'icon-eos_icons_permissions mr-2',
+       activeClassName,
+     },
    ],
    links: [
      { to: '/users', text: 'Users', activeClassName },
