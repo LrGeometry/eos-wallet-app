@@ -6,7 +6,10 @@
     width: 225px;
   }
   @media (max-width: 767px) {
-    display: none;
+    width: 275px;
+    height: 100%;
+    position: absolute;
+    z-index: 0;
   }
   .navbar-links {
     list-style: none;

@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import { Redirect, Route, Switch } from 'react-router';
-import { Helmet } from 'react-helmet';
-import Modal from 'react-modal';
 import { renderRoutes } from 'react-router-config';
+import { Helmet } from 'react-helmet';
+import { connect } from 'react-redux';
+import Modal from 'react-modal';
 import {
   Header,
   Footer,
   Navbar } from '../../components';
 import routes from '../../routes';
+import { closeMenu, toggleMenu } from '../../components/Header/reducer';
 
 const normalRoutes = routes[0].routes.filter(r => !r.isModal);
 const modalRoutes = routes[0].routes.filter(r => r.isModal);
@@ -41,6 +43,12 @@ class App extends Component {
     };
   }
 
+  componentDidMount() {
+    const { forceCloseMenu, history } = this.props;
+
+    history.listen(forceCloseMenu);
+  }
+
   componentWillUpdate(nextProps) {
     const { location } = this.props;
     // set previousLocation if props.location is not modal
@@ -53,19 +61,29 @@ class App extends Component {
   }
 
   render() {
-    const { className, location = this.previousLocation } = this.props;
+    const {
+      className,
+      isOpen,
+      location = this.previousLocation,
+      onMenuClick,
+    } = this.props;
     const isModal = modalRoutes.some(({ path }) => new RegExp(path).test(location.pathname));
 
     location.state = { modal: isModal };
 
     return (
-      <main className={className}>
+      <main className={`${className} ${isOpen ? 'open' : 'closed'}`}>
         <Helmet titleTemplate="%s | EOS Wallet" defaultTitle="EOS Wallet" />
 
         <Header />
         <div className="flex-fill">
           <Navbar />
           <Scene>
+            <div
+              className="menu-closer"
+              onClick={onMenuClick}
+            />
+
             <Switch location={isModal ? this.previousLocation : location}>
               {renderRoutes(normalRoutes)}
             </Switch>
@@ -86,4 +104,20 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = ({ header: { menu } }) => ({
+  isOpen: menu,
+});
+
+const mapDispatchToProps = dispatch => ({
+  onMenuClick: () => {
+    dispatch(toggleMenu());
+  },
+  forceCloseMenu: () => {
+    dispatch(closeMenu());
+  },
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(App);

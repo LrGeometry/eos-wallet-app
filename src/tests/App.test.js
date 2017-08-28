@@ -18,9 +18,12 @@ it('renders without crashing', () => {
   const staticContext = {};
 
   ReactDOM.render(
-    <StaticRouter location="/" context={staticContext}>
+    <StaticRouter
+      location="/"
+      context={staticContext}
+    >
       <Provider store={store}>
-        <App />
+        <App history={history} />
       </Provider>
     </StaticRouter>,
     div,
