@@ -19,7 +19,7 @@ class TransferForm extends Component {
      <form>
        <fieldset className="form-group">
          <label htmlFor="to">To</label>
-         <div className="Field-prefix">
+         <div className="input-prefix">
            <Field
              aria-describedby="to"
              className="form-control form-control-lg prefix"

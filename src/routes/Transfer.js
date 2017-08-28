@@ -27,7 +27,7 @@ class Transfer extends Component {
                   <h3>Transaction History</h3>
                 </div>
                 <div>
-                  <small className="text-muted"><Link to="/transactions">View All</Link></small>
+                  <small className="form-text text-muted"><Link to="/transactions">View All</Link></small>
                 </div>
               </div>
               <div className="row">
