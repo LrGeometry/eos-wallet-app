@@ -3,21 +3,33 @@ import { Link, TransferForm } from '../components';
 import { Transactions } from '../containers';
 import { Helmet } from 'react-helmet';
 
-class Transfer extends Component {
-  render() {
-    return (
-      <div>
-        <Helmet>
-          <title>Transfer</title>
-        </Helmet>
-        <div className="container-full">
-          <div className="row">
-            <div className="col-12">
-              <h2>Transfer</h2>
+const Transfer = () => (
+  <div>
+    <Helmet>
+      <title>Transfer</title>
+    </Helmet>
+    <div className="container-full">
+      <div className="row">
+        <div className="col-12">
+          <h2>Transfer</h2>
+        </div>
+      </div>
+      <div className="row">
+        <div className="col-12 col-lg-7">
+          <div className="section">
+            <p>Move funds to another EOS account.</p>
+            <TransferForm />
+          </div>
+          <div className="d-flex justify-content-between items-center">
+            <div>
+              <h3>Transaction History</h3>
+            </div>
+            <div>
+              <small className="text-muted"><Link to="/transactions">View All</Link></small>
             </div>
           </div>
           <div className="row">
-            <div className="col-12 col-lg-7">
+            <div className="col-12">
               <div className="section">
                 <p>Move funds to another EOS account.</p>
                 <TransferForm />
@@ -58,9 +70,27 @@ class Transfer extends Component {
             </div>
           </div>
         </div>
+        <div className="col-12 col-lg-5">
+          <h5>What are EOS tokens?</h5>
+          <div className="module p-4 mb-5">
+            {/* eslint-disable max-len */}
+            <p>
+              EOS tokens are ERC-20 compatible tokens distributed on the Ethereum blockchain pursuant to a related ERC-20 smart contract (the “EOS Tokens”).
+            </p>
+            {/* eslint-enable max-len */}
+          </div>
+          <h5>How can I use EOS tokens?</h5>
+          <div className="module p-4">
+            {/* eslint-disable max-len */}
+            <p>
+              block.one is building the EOS.IO Software but it will not configure and/or launch any public blockchain platform adopting the open source EOS.IO Software (the “EOS Platform”). Any launch of an EOS Platform will occur by members of the community unrelated to block.one. Third parties launching the EOS Platform may delete, modify or supplement the EOS.IO Software prior to, during or after launching the EOS Platform.
+            </p>
+            {/* eslint-enable max-len */}
+          </div>
+        </div>
       </div>
-    );
-  }
-}
+    </div>
+  </div>
+);
 
 export default Transfer;
