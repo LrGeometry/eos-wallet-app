@@ -1,4 +1,3 @@
-import { App } from '../containers';
 import About from './About';
 import CreateAccount from './CreateAccount';
 import Faq from './Faq';

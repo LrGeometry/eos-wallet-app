@@ -7,7 +7,7 @@ import {
   PasswordForm,
   Progress } from '../../components';
 
-const CreateAccount = ({ children }) => (
+const CreateAccount = () => (
   <div className="login">
     <div className="login-header modal-header">
       <h2>Create your EOS account</h2>
