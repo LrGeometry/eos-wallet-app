@@ -11,12 +11,15 @@
   width: calc(100% - 275px);
   padding: 2rem 2.5rem;
   flex: 1 0 auto;
+  background-color: $bg-grey-80;
   @media (max-width: 1200px) {
     width: calc(100% - 225px);
   }
   @media (max-width: 767px) {
+    position: absolute;
     width: 100%;
     padding: 1.5rem;
+    z-index: 1;
   }
   ul {
     padding-left: 0;
