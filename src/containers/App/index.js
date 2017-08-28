@@ -6,8 +6,8 @@ import { renderRoutes } from 'react-router-config';
 import {
   Header,
   Footer,
-  Navbar } from '../components';
-import routes from '../routes';
+  Navbar } from '../../components';
+import routes from '../../routes';
 
 const normalRoutes = routes[0].routes.filter(r => !r.isModal);
 const modalRoutes = routes[0].routes.filter(r => r.isModal);
@@ -35,7 +35,7 @@ class App extends Component {
     super(props, context);
 
     this.previousLocation = {
-      pathname: '/about',
+      pathname: '/',
       hash: '',
       search: '',
     };
@@ -43,7 +43,6 @@ class App extends Component {
 
   componentWillUpdate(nextProps) {
     const { location } = this.props;
-
     // set previousLocation if props.location is not modal
     if (
       nextProps.history.action !== 'POP' &&
@@ -70,6 +69,7 @@ class App extends Component {
             <Switch location={isModal ? this.previousLocation : location}>
               {renderRoutes(normalRoutes)}
             </Switch>
+
             <Footer />
           </Scene>
         </div>

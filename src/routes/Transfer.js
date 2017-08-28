@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { TransferForm } from '../components';
+import { Link, TransferForm } from '../components';
 import { Transactions } from '../containers';
 import { Helmet } from 'react-helmet';
 
@@ -27,7 +27,7 @@ class Transfer extends Component {
                   <h3>Transaction History</h3>
                 </div>
                 <div>
-                  <small className="text-muted"><a>View All</a></small>
+                  <small className="text-muted"><Link to="/transactions">View All</Link></small>
                 </div>
               </div>
               <div className="row">
