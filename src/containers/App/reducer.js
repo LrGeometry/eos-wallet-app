@@ -1,3 +1,4 @@
+/* global fetch */
 const TRY_LOGIN = 'TRY_LOGIN';
 const FAIL_LOGIN = 'FAIL_LOGIN';
 const SUCCEED_LOGIN = 'SUCCEED_LOGIN';
