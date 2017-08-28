@@ -63,7 +63,7 @@ export function getLogin(credentails) {
           user,
         }));
       })
-      .catch(() => {
+      .catch((e) => {
         dispatch(failLogin({ errors: e }));
       });
   };
