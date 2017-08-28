@@ -1,16 +1,18 @@
 import React from 'react';
-import { User } from '../containers';
-import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { User } from '../../containers';
+import { Link } from '../';
+import { toggleMenu } from './reducer';
 
 const Header = ({
   className = 'header row no-gutters items-center p-0 p-md-4',
-  handleOpen,
+  onMenuClick,
   isOpen,
 }) => (
   <header className={className}>
     <div
       className={`mobile-nav mr-2 hidden-md-up ${isOpen ? 'open' : 'closed'}`}
-      onClick={handleOpen}
+      onClick={onMenuClick}
     >
       <span className="icon-eos_icons_menu" />
     </div>
@@ -26,4 +28,17 @@ const Header = ({
   </header>
 );
 
-export default Header;
+const mapStateToProps = ({ header: { menu } }) => ({
+  isOpen: menu,
+});
+
+const mapDispatchToProps = dispatch => ({
+  onMenuClick: () => {
+    dispatch(toggleMenu());
+  },
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Header);

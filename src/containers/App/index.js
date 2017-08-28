@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Redirect, Route, Switch } from 'react-router';
-import { Helmet } from 'react-helmet';
-import Modal from 'react-modal';
 import { renderRoutes } from 'react-router-config';
+import { Helmet } from 'react-helmet';
+import { connect } from 'react-redux';
+import Modal from 'react-modal';
 import {
   Header,
   Footer,
@@ -53,13 +54,17 @@ class App extends Component {
   }
 
   render() {
-    const { className, location = this.previousLocation } = this.props;
+    const {
+      className,
+      location = this.previousLocation,
+      isOpen,
+    } = this.props;
     const isModal = modalRoutes.some(({ path }) => new RegExp(path).test(location.pathname));
 
     location.state = { modal: isModal };
 
     return (
-      <main className={className}>
+      <main className={`${className} ${isOpen ? 'xyz' : 'zzz'}`}>
         <Helmet titleTemplate="%s | EOS Wallet" defaultTitle="EOS Wallet" />
 
         <Header />
@@ -86,4 +91,13 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = ({ header: { menu } }) => ({
+  isOpen: menu,
+});
+
+const mapDispatchToProps = dispatch => ({});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(App);
