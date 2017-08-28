@@ -1,23 +1,16 @@
 import React, { Component } from 'react';
 import { Redirect, Route, Switch } from 'react-router';
 import { Helmet } from 'react-helmet';
+import Modal from 'react-modal';
+import { renderRoutes } from 'react-router-config';
 import {
   Header,
   Footer,
   Navbar } from '../components';
-import {
-  About,
-  Faq,
-  NoMatch,
-  Permissions,
-  Preferences,
-  Profile,
-  TransactionHistory,
-  Transfer,
-  Users } from '../routes';
-import Modal from 'react-modal';
-import Login from './Login';
-import CreateAccount from './CreateAccount';
+import routes from '../routes';
+
+const normalRoutes = routes[0].routes.filter(r => !r.isModal);
+const modalRoutes = routes[0].routes.filter(r => r.isModal);
 
 const Scene = ({
   children,
@@ -32,11 +25,6 @@ const Scene = ({
     {children}
   </div>
 );
-
-const modalRoutes = Object.freeze([
-  '/create-account',
-  '/login',
-]);
 
 class App extends Component {
   static defaultProps = {
@@ -67,7 +55,7 @@ class App extends Component {
 
   render() {
     const { className, location = this.previousLocation } = this.props;
-    const isModal = modalRoutes.some(r => new RegExp(r).test(location.pathname));
+    const isModal = modalRoutes.some(({ path }) => new RegExp(path).test(location.pathname));
 
     location.state = { modal: isModal };
 
@@ -80,46 +68,7 @@ class App extends Component {
           <Navbar />
           <Scene>
             <Switch location={isModal ? this.previousLocation : location}>
-              <Route
-                component={Transfer}
-                exact
-                path="/"
-              />
-              <Redirect
-                from="/transfer"
-                to="/"
-              />
-              <Route
-                component={TransactionHistory}
-                path="/transactions"
-              />
-              <Route
-                component={Users}
-                path="/users"
-              />
-              <Route
-                component={Profile}
-                path="/user/:id"
-              />
-              <Route
-                component={Permissions}
-                path="/permissions"
-              />
-              <Route
-                component={Preferences}
-                path="/preferences"
-              />
-              <Route
-                component={About}
-                path="/about"
-              />
-              <Route
-                component={Faq}
-                path="/faq"
-              />
-              <Route
-                component={NoMatch}
-              />
+              {renderRoutes(normalRoutes)}
             </Switch>
             <Footer />
           </Scene>
@@ -130,14 +79,7 @@ class App extends Component {
             isOpen
             contentLabel={location.pathname}
           >
-            <Route
-              component={Login}
-              path="/login"
-            />
-            <Route
-              component={CreateAccount}
-              path="/create-account"
-            />
+            {renderRoutes(modalRoutes)}
           </Modal> : null}
       </main>
     );
