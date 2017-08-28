@@ -53,7 +53,7 @@ function succeedLogin({ user }) {
   };
 }
 
-export function getLogin(credentails) {
+export function getLogin(credentials) {
   return async (dispatch) => {
     dispatch(tryLogin(credentials));
 
