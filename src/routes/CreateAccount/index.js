@@ -5,7 +5,7 @@ import {
   PhoneForm,
   UsernameForm,
   PasswordForm,
-  Progress } from '../components';
+  Progress } from '../../components';
 
 const CreateAccount = ({ children }) => (
   <div className="login">

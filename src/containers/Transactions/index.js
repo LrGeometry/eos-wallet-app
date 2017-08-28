@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { observer } from 'mobx-react';
-import { List, Icon } from '../components';
-import TransactionsQuery from '../query/transactions';
+import { List, Icon } from '../../components';
+import TransactionsQuery from '../../query/transactions';
 
 const Transaction = ({ date, sender, memo, amount }) => (
   <div className="transaction d-flex flex-row">
@@ -36,6 +35,10 @@ class Transactions extends Component {
 
  dataTransform(data) {
    return data.map((item) => {
+      if (item.date.month) {
+        return item;
+      }
+
      const date = new Date(item.date);
      item.date = {
        month: date.toLocaleString('en-US', { month: 'long' }).substr(0, 3),

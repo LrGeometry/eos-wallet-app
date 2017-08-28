@@ -1,9 +1,77 @@
-export { default as About } from './About';
-export { default as Faq } from './Faq';
-export { default as NoMatch } from './NoMatch';
-export { default as Permissions } from './Permissions';
-export { default as Preferences } from './Preferences';
-export { default as Profile } from './Profile';
-export { default as TransactionHistory } from './TransactionHistory';
-export { default as Transfer } from './Transfer';
-export { default as Users } from './Users';
+import { App } from '../containers';
+import About from './About';
+import CreateAccount from './CreateAccount';
+import Faq from './Faq';
+import Login from './Login';
+import NoMatch from './NoMatch';
+import Permissions from './Permissions';
+import Preferences from './Preferences';
+import Profile from './Profile';
+import Transactions from './TransactionHistory';
+import Transfer from './Transfer';
+import Users from './Users';
+
+export default [
+  {
+    routes: [
+      {
+        path: '/login',
+        component: Login,
+        title: '',
+        isModal: true,
+      },
+      {
+        path: '/create-account',
+        component: CreateAccount,
+        title: '',
+        isModal: true,
+      },
+      {
+        path: '/about',
+        component: About,
+        title: '',
+      },
+      {
+        path: '/faq',
+        component: Faq,
+        title: '',
+      },
+      {
+        path: '/',
+        component: Transfer,
+        exact: true,
+        title: '',
+      },
+      {
+        path: '/transactions',
+        component: Transactions,
+        title: '',
+      },
+      {
+        path: '/users',
+        component: Users,
+        title: '',
+      },
+      {
+        path: '/user/:id',
+        component: Profile,
+        title: '',
+      },
+      {
+        path: '/permissions',
+        component: Permissions,
+        title: '',
+      },
+      {
+        path: '/preferences',
+        component: Preferences,
+        title: '',
+      },
+      {
+        path: '*',
+        component: NoMatch,
+        title: '',
+      },
+    ],
+  },
+];

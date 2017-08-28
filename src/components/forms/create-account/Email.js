@@ -1,7 +1,8 @@
 import React from 'react';
+import { Field, reduxForm } from 'redux-form';
 
-const Email = () => (
-  <form>
+const Email = ({ handleSubmit, submitting }) => (
+  <form onSubmit={handleSubmit}>
     <h2>Next your email</h2>
     <p>Enter your email below.</p>
 
@@ -10,7 +11,7 @@ const Email = () => (
       <div clasName="input-container">
         <div className="icon" />
         <div className="input-prefix">
-          <input
+          <Field
             aria-describedby="username"
             className="form-control form-control-lg prefix"
             id="username"
@@ -24,7 +25,11 @@ const Email = () => (
     <div className="modal-cta">
       <div className="row col-12 no-gutters p-0">
         <div className="col-sm-auto col-12 pl-0 pr-sm-2 pr-0 mb-sm-0 mb-3">
-          <button className="btn btn-primary btn-lg btn-block" type="submit">
+          <button
+            disabled={submitting}
+            className="btn btn-primary btn-lg btn-block"
+            type="submit"
+          >
             Continue
           </button>
         </div>
@@ -33,5 +38,7 @@ const Email = () => (
   </form>
 );
 
-export default Email;
+export default reduxForm({
+  form: 'email',
+})(Email);
 

@@ -1,7 +1,8 @@
 import React from 'react';
+import { Field, reduxForm } from 'redux-form';
 
-const Password = () => (
-  <form>
+const Password = ({ handleSubmit, submitting }) => (
+  <form onSubmit={handleSubmit}>
     <h2>Choose a password</h2>
 
     <fieldset className="form-group">
@@ -9,7 +10,7 @@ const Password = () => (
       <div clasName="input-container">
         <div className="icon" />
         <div className="input-prefix">
-          <input
+          <Field
             aria-describedby="password"
             className="form-control form-control-lg prefix"
             id="password"
@@ -23,7 +24,11 @@ const Password = () => (
     <div className="modal-cta">
       <div className="row col-12 no-gutters p-0">
         <div className="col-sm-auto col-12 pl-0 pr-sm-2 pr-0 mb-sm-0 mb-3">
-          <button className="btn btn-primary btn-lg btn-block" type="submit">
+          <button
+            disabled={submitting}
+            className="btn btn-primary btn-lg btn-block"
+            type="submit"
+          >
             Continue
           </button>
         </div>
@@ -32,5 +37,6 @@ const Password = () => (
   </form>
 );
 
-export default Password;
-
+export default reduxForm({
+  form: 'password',
+})(Password);
