@@ -12,8 +12,6 @@ import routes from '../../routes';
 const normalRoutes = routes[0].routes.filter(r => !r.isModal);
 const modalRoutes = routes[0].routes.filter(r => r.isModal);
 
-import { Values } from 'redux-form-website-template';
-
 const Scene = ({
   children,
   className = 'main-content',
