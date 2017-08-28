@@ -1,4 +1,5 @@
 const TOGGLE_MENU = 'TOGGLE_MENU';
+const CLOSE_MENU = 'CLOSE_MENU';
 
 const initialState = {
   menu: false,
@@ -6,6 +7,11 @@ const initialState = {
 
 export function reducer(state = initialState, action = {}) {
   switch (action.type) {
+    case CLOSE_MENU:
+      return {
+        ...state,
+        menu: false,
+      };
     case TOGGLE_MENU:
       return {
         ...state,
@@ -14,6 +20,12 @@ export function reducer(state = initialState, action = {}) {
     default:
       return state;
   }
+}
+
+export function closeMenu() {
+  return {
+    type: CLOSE_MENU,
+  };
 }
 
 export function toggleMenu() {

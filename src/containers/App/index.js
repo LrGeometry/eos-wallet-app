@@ -9,6 +9,7 @@ import {
   Footer,
   Navbar } from '../../components';
 import routes from '../../routes';
+import { closeMenu, toggleMenu } from '../../components/Header/reducer';
 
 const normalRoutes = routes[0].routes.filter(r => !r.isModal);
 const modalRoutes = routes[0].routes.filter(r => r.isModal);
@@ -42,6 +43,12 @@ class App extends Component {
     };
   }
 
+  componentDidMount() {
+    const { forceCloseMenu, history } = this.props;
+
+    history.listen(forceCloseMenu);
+  }
+
   componentWillUpdate(nextProps) {
     const { location } = this.props;
     // set previousLocation if props.location is not modal
@@ -56,8 +63,9 @@ class App extends Component {
   render() {
     const {
       className,
-      location = this.previousLocation,
       isOpen,
+      location = this.previousLocation,
+      onMenuClick,
     } = this.props;
     const isModal = modalRoutes.some(({ path }) => new RegExp(path).test(location.pathname));
 
@@ -71,7 +79,11 @@ class App extends Component {
         <div className="flex-fill">
           <Navbar />
           <Scene>
-            <div className="menu-closer" />
+            <div
+              className="menu-closer"
+              onClick={onMenuClick}
+            />
+
             <Switch location={isModal ? this.previousLocation : location}>
               {renderRoutes(normalRoutes)}
             </Switch>
@@ -96,7 +108,14 @@ const mapStateToProps = ({ header: { menu } }) => ({
   isOpen: menu,
 });
 
-const mapDispatchToProps = dispatch => ({});
+const mapDispatchToProps = dispatch => ({
+  onMenuClick: () => {
+    dispatch(toggleMenu());
+  },
+  forceCloseMenu: () => {
+    dispatch(closeMenu());
+  },
+});
 
 export default connect(
   mapStateToProps,
