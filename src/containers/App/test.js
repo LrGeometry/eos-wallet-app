@@ -4,8 +4,9 @@ import { StaticRouter, Route } from 'react-router';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
-import { App, reducers } from '../containers';
 import createHistory from 'history/createBrowserHistory';
+import App from './';
+import reducers from '../reducers';
 
 const history = createHistory();
 const store = createStore(
