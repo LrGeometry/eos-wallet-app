@@ -1,59 +1,32 @@
 import React, { Component } from 'react';
+import { Field, reduxForm } from 'redux-form';
 // import validation
 // import mutation
+
+const numbersOnly = (value, previousValue) => (
+  /^\d*\.?\d*?$/.test(value) ? value : previousValue
+);
 
 class TransferForm extends Component {
  static defaultProps = {
    balance: '0.000',
  }
 
- constructor(props, context) {
-   super(props, context);
-
-   this.state = {
-     amount: 0,
-     emailAddress: '',
-     memo: '',
-   };
- }
-
- onChange(e) {
-   const { name, pattern, value } = e.target;
-
-   if (pattern && !(new RegExp(pattern).test(value))) {
-     return;
-   }
-
-   this.setState({ [name]: value });
- }
-
- clearInputs() {
-   this.setState({
-     amount: '',
-     emailAddress: '',
-     memo: '',
-   });
- }
-
  render() {
-   const { amount, emailAddress, memo } = this.state;
-   const { balance } = this.props;
-   const onChange = this.onChange.bind(this);
-   const clearInputs = this.clearInputs.bind(this);
+   const { balance, reset } = this.props;
 
    return (
      <form>
        <fieldset className="form-group">
          <label htmlFor="to">To</label>
-         <div className="input-prefix">
-           <input
+         <div className="Field-prefix">
+           <Field
              aria-describedby="to"
              className="form-control form-control-lg prefix"
              id="to"
              name="emailAddress"
-             onChange={onChange}
              type="text"
-             value={emailAddress}
+             component="input"
            />
          </div>
        </fieldset>
@@ -62,30 +35,29 @@ class TransferForm extends Component {
          <div>
            <small className="form-text text-muted"><a>Use Full Balance</a></small>
            <label htmlFor="amount">Amount</label>
-           <input
+           <Field
              aria-describedby="amount"
              className="form-control form-control-lg"
              id="amount"
              name="amount"
-             onChange={onChange}
              pattern="^[0-9.]*$"
+             normalize={numbersOnly}
              required
+             component="input"
              type="text"
-             value={amount}
            />
          </div>
        </fieldset>
 
        <fieldset className="form-group">
          <label htmlFor="memo">Memo</label>
-         <input
+         <Field
            aria-describedby="emailHelp"
            className="form-control form-control-lg"
            id="memo"
            name="memo"
-           onChange={onChange}
            type="text"
-           value={memo}
+           component="input"
          />
        </fieldset>
 
@@ -100,7 +72,7 @@ class TransferForm extends Component {
          <div className="col-sm-auto col-6 pl-2 pr-0">
            <button
              className="btn btn-secondary btn-lg btn-block"
-             onClick={clearInputs}
+             onClick={reset}
              type="button"
            >Clear
            </button>
@@ -111,4 +83,6 @@ class TransferForm extends Component {
  }
 }
 
-export default TransferForm;
+export default reduxForm({
+  form: 'transfer',
+})(TransferForm);
