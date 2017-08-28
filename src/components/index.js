@@ -10,3 +10,4 @@ export { default as PreferencesForm } from './forms/Preferences';
 export { default as Progress } from './Progress';
 export { default as ResetPasswordForm } from './forms/ResetPassword';
 export { default as TransferForm } from './forms/Transfer';
+export { Link } from 'react-router-dom';
