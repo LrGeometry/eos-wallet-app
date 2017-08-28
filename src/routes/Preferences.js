@@ -37,9 +37,11 @@ class Preferences extends Component {
                   </div>
                 </div>
                 <div className="d-flex flex-row">
+                  {/* eslint-disable max-len */}
                   <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a elit pulvinar, varius mauris non, condimentum tellus. Maecenas vitae ultrices diam. Lorem ipsum dolor sit amet, consectetur elit.
                   </p>
+                  {/* eslint-enable max-len */}
                 </div>
               </div>
             </div>
