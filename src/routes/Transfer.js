@@ -32,19 +32,21 @@ class Transfer extends Component {
               </div>
               <div className="row">
                 <div className="col-12">
-                  <Transactions />
+                  <div className="section">
+                    <Transactions />
+                  </div>
                 </div>
               </div>
             </div>
             <div className="col-12 col-lg-5">
               <h5>What are EOS tokens?</h5>
-              <div className="module">
+              <div className="module p-4 mb-5">
                 <p>
                   EOS tokens are ERC-20 compatible tokens distributed on the Ethereum blockchain pursuant to a related ERC-20 smart contract (the “EOS Tokens”).
                 </p>
               </div>
               <h5>How can I use EOS tokens?</h5>
-              <div className="module">
+              <div className="module p-4">
                 <p>
                   block.one is building the EOS.IO Software but it will not configure and/or launch any public blockchain platform adopting the open source EOS.IO Software (the “EOS Platform”). Any launch of an EOS Platform will occur by members of the community unrelated to block.one. Third parties launching the EOS Platform may delete, modify or supplement the EOS.IO Software prior to, during or after launching the EOS Platform.
                 </p>

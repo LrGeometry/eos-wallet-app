@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router';
+import { Redirect, Route, Switch } from 'react-router';
 import { Helmet } from 'react-helmet';
 import Modal from 'react-modal';
 import { renderRoutes } from 'react-router-config';

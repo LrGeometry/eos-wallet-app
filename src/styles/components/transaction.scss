@@ -1,6 +1,13 @@
 .transaction {
+  a:hover {
+    text-decoration: none;
+    color: inherit;
+  }
   .transaction-meta {
     width: calc(100% - 160px);
+    @media (max-width: 767px) {
+      width: calc(100% - 120px);
+    }
   }
   .transaction-date {
     text-align: center;
@@ -23,18 +30,35 @@
     border: 3px solid $orange;
     @include border-radius(20px);
   }
-  .transaction-memo {
-    p {
-      margin: 0;
-      line-height: 1.25em;
+  .transaction-data {
+    margin-left: 1.25rem;
+    .transaction-sender {
+      line-height: 1rem;
+      a {
+        color: $blue;
+      }
+    }
+    .transaction-memo {
+      font-size: 90%;
+      line-height: 1rem;
+      color: $light-grey;
     }
   }
   .transaction-amount-container {
     width: 160px;
     text-align: right;
+    @media (max-width: 767px) {
+      width: 120px;
+    }
     .transaction-icon {
       margin-left: .25rem;
-      font-size: 80%;
+      font-size: 70%;
+      &.up {
+        color: $green;
+      }
+      &.down {
+        color: $red;
+      }
     }
     .transaction-amount {
       margin-bottom: 0;

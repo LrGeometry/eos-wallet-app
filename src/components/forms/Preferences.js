@@ -29,7 +29,7 @@ class PreferencesForm extends Component {
         </fieldset>
       
         <fieldset className="form-group">
-          <label htmlFor="about">About</label>
+          <label htmlFor="about">About (150 Character Max)</label>
           <input
             aria-describedby="about"
             className="form-control form-control-lg"

@@ -38,6 +38,9 @@
     .url {
       color: $blue-grey;
       font-size: 100%;
+      &:hover {
+        text-decoration: none;
+      }
     }
     .divider {
       color: $blue-grey;
