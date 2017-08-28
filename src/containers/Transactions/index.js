@@ -47,9 +47,9 @@ const Transactions = ({ data }) => (
 );
 
 const mapStateToProps = state => ({
-  data: mapNormalizeDate(state.transactions.recents)
+  data: mapNormalizeDate(state.transactions.recents),
 });
 
 export default connect(
-  mapStateToProps
+  mapStateToProps,
 )(Transactions);
