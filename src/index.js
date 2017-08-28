@@ -5,9 +5,6 @@ import { Router, Route } from 'react-router';
 import { Provider } from 'react-redux';
 import createHistory from 'history/createBrowserHistory';
 import { createStore } from 'redux';
-
-console.log(reducers);
-
 // TODO assess if needed
 import registerServiceWorker from './func/registerServiceWorker';
 
