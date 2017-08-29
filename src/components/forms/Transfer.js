@@ -64,14 +64,14 @@ class TransferForm extends Component {
        <div className="row col-12 no-gutters p-0">
          <div className="col-sm-auto col-6 pl-0 pr-2">
            <button
-             className="btn btn-primary btn-lg btn-block"
+             className="btn btn-primary btn-lg btn-block px-0 px-sm-5"
              type="submit"
            >Submit
            </button>
          </div>
          <div className="col-sm-auto col-6 pl-2 pr-0">
            <button
-             className="btn btn-secondary btn-lg btn-block"
+             className="btn btn-secondary btn-lg btn-block px-0 px-sm-5"
              onClick={reset}
              type="button"
            >Clear
