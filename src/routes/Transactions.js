@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import Transactions from '../containers/Transactions';
+import TransactionsContainer from '../containers';
 import { Helmet } from 'react-helmet';
 
-class TransactionHistory extends Component {
+class Transactions extends Component {
   render() {
     return (
       <div>
@@ -26,7 +26,7 @@ class TransactionHistory extends Component {
           </div>
           <div className="row">
             <div className="col-12">
-              <Transactions />
+              <TransactionsContainer />
             </div>
           </div>
         </div>
@@ -35,4 +35,4 @@ class TransactionHistory extends Component {
   }
 }
 
-export default TransactionHistory;
+export default Transactions;

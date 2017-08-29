@@ -1,11 +1,11 @@
 import React from 'react';
 import { Route } from 'react-router';
 import {
-  EmailForm,
-  PhoneForm,
-  UsernameForm,
-  PasswordForm,
-  Progress } from '../../components';
+  EmailContainer,
+  PhoneContainer,
+  UsernameContainer,
+  PasswordContainer, } from '../containers/CreateAccount';
+import { Progress } from '../components';
 
 const CreateAccount = () => (
   <div className="login">
@@ -23,10 +23,10 @@ const CreateAccount = () => (
         </ul>
       </div>
       <Progress />
-      <Route exact path="/create-account" component={UsernameForm} />
-      <Route path="/create-account/email" component={EmailForm} />
-      <Route path="/create-account/phone" component={PhoneForm} />
-      <Route path="/create-account/password" component={PasswordForm} />
+      <Route exact path="/create-account" component={UsernameContainer} />
+      <Route path="/create-account/email" component={EmailContainer} />
+      <Route path="/create-account/phone" component={PhoneContainer} />
+      <Route path="/create-account/password" component={PasswordContainer} />
     </div>
   </div>
 );
