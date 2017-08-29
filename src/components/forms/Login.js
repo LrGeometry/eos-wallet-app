@@ -53,18 +53,18 @@ const Login = ({
     </fieldset>
 
     <div className={`button-group ${modal && 'modal-cta'}`}>
-    <div className="row col-12 no-gutters p-0">
-      <div className={`col-12 pl-0 ${modal ? 'col-sm-auto pr-sm-2 mb-3' : 'pr-sm-0 mb-1'}`}>
-        <button
-          className={`btn btn-primary btn-block ${modal ? 'btn-lg' : 'btn-md'}`}
-          disabled={submitting}
-          type="submit"
-        >
+      <div className="row col-12 no-gutters p-0">
+        <div className={`col-12 pl-0 ${modal ? 'col-sm-auto pr-sm-2 mb-3' : 'pr-sm-0 mb-1'}`}>
+          <button
+            className={`btn btn-primary btn-block ${modal ? 'btn-lg' : 'btn-md'}`}
+            disabled={submitting}
+            type="submit"
+          >
           Login
-        </button>
-      </div>
-      <div className={`${modal ? 'col-sm-auto col-12 p2-2 pl-sm-2 pl-0 mb-3' : 'd-none'}`}>
-        {modal &&
+          </button>
+        </div>
+        <div className={`${modal ? 'col-sm-auto col-12 p2-2 pl-sm-2 pl-0 mb-3' : 'd-none'}`}>
+          {modal &&
           <button
             className="btn btn-secondary btn-lg btn-block"
             onClick={handleClose}

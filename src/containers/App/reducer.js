@@ -1,3 +1,4 @@
+/* global fetch */
 const TRY_LOGIN = 'TRY_LOGIN';
 const FAIL_LOGIN = 'FAIL_LOGIN';
 const SUCCEED_LOGIN = 'SUCCEED_LOGIN';
@@ -53,7 +54,7 @@ function succeedLogin({ user }) {
   };
 }
 
-export function getLogin(credentails) {
+export function getLogin(credentials) {
   return async (dispatch) => {
     dispatch(tryLogin(credentials));
 
@@ -63,7 +64,7 @@ export function getLogin(credentails) {
           user,
         }));
       })
-      .catch(() => {
+      .catch((e) => {
         dispatch(failLogin({ errors: e }));
       });
   };

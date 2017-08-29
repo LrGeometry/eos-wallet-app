@@ -3,7 +3,7 @@ const GET_TRANSACTIONS_FAILURE = 'GET_TRANSACTIONS_FAILURE';
 const GET_TRANSACTIONS_SUCCESS = 'GET_TRANSACTIONS_SUCCESS';
 
 const initialState = {
-  transactions: [
+  recents: [
     {
       sender: {
         name: 'Brian Dawson',
@@ -102,17 +102,17 @@ export function reducer(state = initialState, action) {
     case GET_TRANSACTIONS:
       return {
         ...state,
-        transactions: 'LOADING',
+        recents: 'LOADING',
       };
     case GET_TRANSACTIONS_FAILURE:
       return {
         ...state,
-        transactions: 'FAILURE',
+        recents: 'FAILURE',
       };
     case GET_TRANSACTIONS_SUCCESS:
       return {
         ...state,
-        transactions: action.transactions,
+        recents: action.transactions,
       };
     default:
       return state;

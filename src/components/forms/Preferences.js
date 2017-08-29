@@ -27,7 +27,7 @@ class PreferencesForm extends Component {
             type="text"
           />
         </fieldset>
-      
+
         <fieldset className="form-group">
           <label htmlFor="about">About (150 Character Max)</label>
           <input
@@ -38,7 +38,7 @@ class PreferencesForm extends Component {
             type="text"
           />
         </fieldset>
-      
+
         <fieldset className="form-group">
           <label htmlFor="location">Location</label>
           <input
@@ -49,7 +49,7 @@ class PreferencesForm extends Component {
             type="text"
           />
         </fieldset>
-      
+
         <fieldset className="form-group">
           <label htmlFor="website">Website</label>
           <input

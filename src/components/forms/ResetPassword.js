@@ -32,11 +32,11 @@ const ResetPassword = ({ handleSubmit }) => (
 
     <div className="row col-12 no-gutters p-0 mb-3">
       <div className="col-sm-auto col-12 pl-0 pr-0">
-       <button
-         className="btn btn-secondary btn-lg btn-block"
-         type="submit"
-       >Regenerate Password
-       </button>
+        <button
+          className="btn btn-secondary btn-lg btn-block"
+          type="submit"
+        >Regenerate Password
+        </button>
       </div>
     </div>
 
@@ -54,11 +54,11 @@ const ResetPassword = ({ handleSubmit }) => (
 
     <div className="row col-12 no-gutters p-0">
       <div className="col-sm-auto col-12 pl-0 pr-0">
-       <button
-         className="btn btn-primary btn-lg btn-block"
-         type="submit"
-       >Update Password
-       </button>
+        <button
+          className="btn btn-primary btn-lg btn-block"
+          type="submit"
+        >Update Password
+        </button>
       </div>
     </div>
   </form>

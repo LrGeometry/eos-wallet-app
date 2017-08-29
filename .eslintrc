@@ -8,7 +8,7 @@
     "strict": 0,
     "no-undef": 1,
     "no-unused-vars": 1,
-    "comma-daggle": 1,
+    "comma-dangle": 1,
     "sort-imports": 0,
     "import/first": 0,
     "import/no-extraneous-dependencies": 1,

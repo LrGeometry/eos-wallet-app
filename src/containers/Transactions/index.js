@@ -1,6 +1,17 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { List, Icon } from '../../components';
-import TransactionsQuery from '../../query/transactions';
+
+const mapNormalizeDate = data => data.map(({ date: dateText, ...transaction }) => {
+  const date = new Date(dateText);
+  return {
+    ...transaction,
+    date: {
+      month: date.toLocaleString('en-US', { month: 'long' }).substr(0, 3),
+      day: date.getDay(),
+    },
+  };
+});
 
 const Transaction = ({ date, sender, memo, amount }) => (
   <div className="transaction d-flex flex-row">
@@ -28,36 +39,17 @@ const Transaction = ({ date, sender, memo, amount }) => (
   </div>
 );
 
-class Transactions extends Component {
- static defaultProps = {
-   data: TransactionsQuery,
- }
+const Transactions = ({ data }) => (
+   <List
+     data={data}
+     renderItem={Transaction}
+   />
+);
 
- dataTransform(data) {
-   return data.map((item) => {
-      if (item.date.month) {
-        return item;
-      }
+const mapStateToProps = state => ({
+  data: mapNormalizeDate(state.transactions.recents),
+});
 
-     const date = new Date(item.date);
-     item.date = {
-       month: date.toLocaleString('en-US', { month: 'long' }).substr(0, 3),
-       day: date.getDay(),
-     };
-     return item;
-   });
- }
-
- render() {
-   const { data } = this.props;
-
-   return (
-     <List
-       data={this.dataTransform(data)}
-       renderItem={Transaction}
-     />
-   );
- }
-}
-
-export default Transactions;
+export default connect(
+  mapStateToProps,
+)(Transactions);

@@ -30,7 +30,9 @@ class Permissions extends Component {
                     />
                   </div>
                   <div>
+                    {/* eslint-disable max-len */}
                     <span className="token">IEfja89uewaejwfawe0fjaewf98hwf8ejfhefwfebfaiuewfeuifh</span>
+                    {/* eslint-enable max-len */}
                   </div>
                 </div>
                 <button className="btn btn-primary btn-xsm mt-2 mt-lg-0">Show Private Key</button>
@@ -51,13 +53,17 @@ class Permissions extends Component {
                     />
                   </div>
                   <div>
+                    {/* eslint-disable max-len */}
                     <span className="token">IEfja89uewaejwfawe0fjaewf98hwf8ejfhefwfebfaiuewfeuifh</span>
+                    {/* eslint-enable max-len */}
                   </div>
                 </div>
                 <button className="btn btn-primary btn-xsm mt-2 mt-lg-0">Show Private Key</button>
               </div>
 
+              {/* eslint-disable max-len */}
               <p>The owner key is the master key...<br />The private key or password for the owner..</p>
+              {/* eslint-enable max-len */}
             </div>
           </div>
 
