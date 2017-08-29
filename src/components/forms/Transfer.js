@@ -13,7 +13,7 @@ class TransferForm extends Component {
  }
 
  render() {
-   const { balance, reset } = this.props;
+   const { reset } = this.props;
 
    return (
      <form>

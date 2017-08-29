@@ -6,8 +6,6 @@
   "parser": "babel-eslint",
   "rules": {
     "strict": 0,
-    "no-undef": 1,
-    "no-unused-vars": 1,
     "comma-dangle": 1,
     "sort-imports": 0,
     "import/first": 0,
@@ -34,5 +32,8 @@
     "react/jsx-no-bind": 1,
     "react/no-unescaped-entities": 1,
     "jsx-a11y/no-static-element-interactions": 1
+  },
+  "globals": {
+    "React": true
   }
 }

@@ -7,7 +7,6 @@ import { toggleMenu } from './reducer';
 const Header = ({
   className = 'header row no-gutters items-center p-0 p-md-4',
   onMenuClick,
-  isOpen,
 }) => (
   <header className={className}>
     <div
