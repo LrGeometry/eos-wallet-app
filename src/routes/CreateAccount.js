@@ -1,10 +1,6 @@
 import React from 'react';
-import { Route } from 'react-router';
-import {
-  EmailContainer,
-  PhoneContainer,
-  UsernameContainer,
-  PasswordContainer, } from '../containers/CreateAccount';
+import { renderRoutes } from 'react-router-config';
+import subRoutes from './subroutes';
 import { Progress } from '../components';
 
 const CreateAccount = () => (
@@ -13,6 +9,7 @@ const CreateAccount = () => (
       <h2>Create your EOS account</h2>
       <button className="js-modal-close">x</button>
     </div>
+
     <div className="modal-body">
       <div className="login-progress">
         <ul className="d-flex justify-content-between items-center col-12 mb-4">
@@ -22,11 +19,10 @@ const CreateAccount = () => (
           <li className="col-4" />
         </ul>
       </div>
+
       <Progress />
-      <Route exact path="/create-account" component={UsernameContainer} />
-      <Route path="/create-account/email" component={EmailContainer} />
-      <Route path="/create-account/phone" component={PhoneContainer} />
-      <Route path="/create-account/password" component={PasswordContainer} />
+
+      {renderRoutes(subRoutes[0].routes)}
     </div>
   </div>
 );

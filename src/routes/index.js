@@ -6,7 +6,7 @@ import NoMatch from './NoMatch';
 import Permissions from './Permissions';
 import Preferences from './Preferences';
 import Profile from './Profile';
-import Transactions from './TransactionHistory';
+import Transactions from './Transactions';
 import Transfer from './Transfer';
 import Users from './Users';
 
