@@ -62,6 +62,11 @@ class App extends Component {
     }
   }
 
+  handleModalClose() {
+    const { history } = this.props;
+    history.push(this.previousLocation);
+  }
+
   render() {
     const {
       account,
@@ -71,6 +76,7 @@ class App extends Component {
       location = this.previousLocation,
       onMenuClick,
     } = this.props;
+    const handleModalClose = this.handleModalClose.bind(this);
     const isModal = modalRoutes.some(({ path }) => new RegExp(path).test(location.pathname));
 
     location.state = { modal: isModal };
@@ -110,6 +116,7 @@ class App extends Component {
           <Modal
             isOpen
             contentLabel={location.pathname}
+            onRequestClose={handleModalClose}
           >
             {renderRoutes(modalRoutes)}
           </Modal> : null}
