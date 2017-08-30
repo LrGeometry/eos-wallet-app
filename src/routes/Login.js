@@ -1,11 +1,16 @@
 import React from 'react';
 import { LoginContainer } from '../containers';
 
-const Login = () => (
+const Login = ({ handleModalClose }) => (
   <div className="login">
     <div className="login-header modal-header">
       <h2>Login to EOS</h2>
-      <button className="js-modal-close">x</button>
+      <button
+        className="js-modal-close"
+        onClick={handleModalClose}
+      >
+        x
+      </button>
     </div>
     <div className="modal-body">
       <LoginContainer
