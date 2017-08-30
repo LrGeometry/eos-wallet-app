@@ -1,6 +1,5 @@
-import React from 'react';
 import { connect } from 'react-redux';
-import { List, Transaction } from '../../components';
+import { List, Transaction as renderItem } from '../../components';
 
 /* TODO review if logic makes sense here */
 const mapNormalizeDate = data => data.map(({ date: dateText, ...transaction }) => {
@@ -16,7 +15,7 @@ const mapNormalizeDate = data => data.map(({ date: dateText, ...transaction }) =
 
 const mapStateToProps = state => ({
   data: mapNormalizeDate(state.transactions.recents),
-  renderItem: Transaction
+  renderItem,
 });
 
 const TransactionsContainer = connect(
