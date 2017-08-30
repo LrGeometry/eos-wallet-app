@@ -103,6 +103,7 @@ body {
       cursor: pointer;
       &:hover {
         color: $orange;
+        text-decoration: underline;
       }
     }
   }
