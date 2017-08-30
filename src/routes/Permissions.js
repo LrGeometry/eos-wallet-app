@@ -24,7 +24,7 @@ class Permissions extends Component {
                 <div className="d-lg-flex justify-content-between items-center">
                   <div>
                     <img
-                      className="qr-code mr-3 mb-2 mb-lg-0"
+                      className="qr-code mr-0 mb-2 mr-sm-3 mb-lg-0"
                       alt=""
                       src="images/qr_code.png"
                     />
@@ -47,7 +47,7 @@ class Permissions extends Component {
                 <div className="d-lg-flex justify-content-between items-center">
                   <div>
                     <img
-                      className="qr-code mr-3 mb-2 mb-lg-0"
+                      className="qr-code mr-3 mb-2 mb-2 mr-sm-3 mb-lg-0"
                       alt=""
                       src="images/qr_code.png"
                     />

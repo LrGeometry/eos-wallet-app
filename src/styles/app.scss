@@ -73,6 +73,9 @@ body {
     padding: .75rem 1.5rem;
     @include border-radius(12px);
     margin-bottom: 0.25rem;
+    @media (max-width: 767px) {
+      padding: .75rem 1rem;
+    }
   }
   
   .section {
