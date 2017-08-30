@@ -112,14 +112,14 @@ class App extends Component {
           </Scene>
         </div>
 
-        {isModal ?
+        {isModal &&
           <Modal
             isOpen
             contentLabel={location.pathname}
             onRequestClose={handleModalClose}
           >
             {renderRoutes(modalRoutes)}
-          </Modal> : null}
+          </Modal>}
       </main>
     );
   }
