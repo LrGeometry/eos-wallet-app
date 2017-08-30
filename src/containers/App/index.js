@@ -7,9 +7,11 @@ import Modal from 'react-modal';
 import {
   Header,
   Footer,
-  Navbar } from '../../components';
+  Navbar,
+  Shortcuts } from '../../components';
+import { BalanceContainer } from '../';
 import routes from '../../routes';
-import { closeMenu, toggleMenu } from '../../components/Header/reducer';
+import { closeMenu, toggleMenu } from './reducers/menu';
 
 const normalRoutes = routes[0].routes.filter(r => !r.isModal);
 const modalRoutes = routes[0].routes.filter(r => r.isModal);
@@ -62,8 +64,10 @@ class App extends Component {
 
   render() {
     const {
+      account,
       className,
-      isOpen,
+      forceCloseMenu,
+      isMenuOpen,
       location = this.previousLocation,
       onMenuClick,
     } = this.props;
@@ -72,16 +76,26 @@ class App extends Component {
     location.state = { modal: isModal };
 
     return (
-      <main className={`${className} ${isOpen ? 'open' : 'closed'}`}>
+      <main className={`${className} ${isMenuOpen ? 'open' : 'closed'}`}>
         <Helmet titleTemplate="%s | EOS Wallet" defaultTitle="EOS Wallet" />
 
-        <Header />
+        <Header
+          isMenuOpen={isMenuOpen}
+          onMenuClick={onMenuClick}
+        />
+
         <div className="flex-fill">
-          <Navbar />
+          <Navbar>
+            {account && <BalanceContainer auth /> }
+            {account && <Shortcuts /> }
+          </Navbar>
+
           <Scene>
             <div
               className="menu-closer"
-              onClick={onMenuClick}
+              onClick={forceCloseMenu}
+              role="button"
+              tabIndex={0}
             />
 
             <Switch location={isModal ? this.previousLocation : location}>
@@ -104,8 +118,9 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = ({ header: { menu } }) => ({
-  isOpen: menu,
+const mapStateToProps = ({ balance, menu }) => ({
+  isMenuOpen: menu.isOpen,
+  account: balance.account,
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import { Icon, List } from '../../components';
-import { Link } from 'react-router-dom';
-import UsersQuery from '../../query/users';
+import React from 'react';
+import { connect } from 'react-redux';
+import { Icon, Link, List } from '../../components';
 
+/* TODO relocate */
 const User = ({ url, name, status, icon }) => (
   <div className="transaction">
     <Link to={url}>
@@ -20,21 +20,13 @@ const User = ({ url, name, status, icon }) => (
   </div>
 );
 
-class Users extends Component {
-  static defaultProps = {
-    data: UsersQuery(),
-  }
+const mapStateToProps = ({ users: { all } }) => ({
+  data: all,
+  renderItem: User,
+});
 
-  render() {
-    const { data } = this.props;
+const TransactionsContainer = connect(
+  mapStateToProps,
+)(List);
 
-    return (
-      <List
-        data={data}
-        renderItem={User}
-      />
-    );
-  }
-}
-
-export default Users;
+export default TransactionsContainer;

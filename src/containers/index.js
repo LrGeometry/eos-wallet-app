@@ -1,7 +1,14 @@
 export { default as App } from './App';
-export { default as Balance } from './Balance';
-export { default as Keystore } from './Keystore';
-export { default as Transactions } from './Transactions';
-export { default as User } from './User';
-export { default as Users } from './Users';
+export { default as BalanceContainer } from './BalanceContainer';
+export { default as LoginContainer } from './LoginContainer';
+export {
+  EmailContainer,
+  PasswordContainer,
+  PhoneContainer,
+  UsernameContainer,
+} from './CreateAccount';
+export { default as TransactionsContainer } from './TransactionsContainer';
+export { default as UserContainer } from './UserContainer';
+export { default as ResetPasswordContainer } from './forms/ResetPasswordContainer';
 export { default as reducers } from './reducers';
+export { default as UsersContainer } from './UsersContainer';

@@ -1,18 +1,19 @@
 import React from 'react';
-import { UsersContainer } from '../containers';
+import { TransactionsContainer } from '../containers';
 import { Helmet } from 'react-helmet';
 
-const Users = () => (
+const Transactions = () => (
   <div>
     <Helmet>
-      <title>Users</title>
+      <title>Transaction History</title>
     </Helmet>
     <div className="container-full">
       <div className="d-md-flex justify-content-between items-center">
         <div>
-          <h2>Users</h2>
+          <h2>Transaction History</h2>
         </div>
-        <div className="items-center mb-2 mb-md-0">
+        <div className="d-flex items-center mb-2 mb-md-0">
+          <div className="export icon-eos_icons_export" />
           <div className="module-search">
             <input
               className="form-control"
@@ -23,11 +24,11 @@ const Users = () => (
       </div>
       <div className="row">
         <div className="col-12">
-          <UsersContainer />
+          <TransactionsContainer />
         </div>
       </div>
     </div>
   </div>
 );
 
-export default Users;
+export default Transactions;

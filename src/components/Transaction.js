@@ -1,17 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { List, Icon } from '../../components';
-
-const mapNormalizeDate = data => data.map(({ date: dateText, ...transaction }) => {
-  const date = new Date(dateText);
-  return {
-    ...transaction,
-    date: {
-      month: date.toLocaleString('en-US', { month: 'long' }).substr(0, 3),
-      day: date.getDay(),
-    },
-  };
-});
+import Icon from './Icon';
 
 const Transaction = ({ date, sender, memo, amount }) => (
   <div className="transaction d-flex flex-row">
@@ -39,17 +27,4 @@ const Transaction = ({ date, sender, memo, amount }) => (
   </div>
 );
 
-const Transactions = ({ data }) => (
-   <List
-     data={data}
-     renderItem={Transaction}
-   />
-);
-
-const mapStateToProps = state => ({
-  data: mapNormalizeDate(state.transactions.recents),
-});
-
-export default connect(
-  mapStateToProps,
-)(Transactions);
+export default Transaction;

@@ -16,6 +16,8 @@ const Phone = ({ handleSubmit, submitting }) => (
             className="form-control form-control-lg prefix"
             id="phone"
             name="phone"
+            component="input"
+            type="text"
             required
           />
         </div>

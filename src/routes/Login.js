@@ -1,5 +1,5 @@
 import React from 'react';
-import { LoginForm } from '../../components';
+import { LoginContainer } from '../containers';
 
 const Login = () => (
   <div className="login">
@@ -8,7 +8,7 @@ const Login = () => (
       <button className="js-modal-close">x</button>
     </div>
     <div className="modal-body">
-      <LoginForm
+      <LoginContainer
         modal
       />
     </div>

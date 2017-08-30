@@ -2,7 +2,7 @@ const TOGGLE_MENU = 'TOGGLE_MENU';
 const CLOSE_MENU = 'CLOSE_MENU';
 
 const initialState = {
-  menu: false,
+  isOpen: false,
 };
 
 export function reducer(state = initialState, action = {}) {
@@ -10,12 +10,12 @@ export function reducer(state = initialState, action = {}) {
     case CLOSE_MENU:
       return {
         ...state,
-        menu: false,
+        isOpen: false,
       };
     case TOGGLE_MENU:
       return {
         ...state,
-        menu: !state.menu,
+        isOpen: !state.isOpen,
       };
     default:
       return state;

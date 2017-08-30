@@ -34,12 +34,6 @@ export function reducer(state = initialState, action = {}) {
   }
 }
 
-function tryLogin() {
-  return {
-    type: TRY_LOGIN,
-  };
-}
-
 function failLogin({ errors }) {
   return {
     type: FAIL_LOGIN,
@@ -54,7 +48,7 @@ function succeedLogin({ user }) {
   };
 }
 
-export function getLogin(credentials) {
+export function tryLogin(credentials) {
   return async (dispatch) => {
     dispatch(tryLogin(credentials));
 

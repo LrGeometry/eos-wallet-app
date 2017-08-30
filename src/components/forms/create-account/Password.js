@@ -16,6 +16,7 @@ const Password = ({ handleSubmit, submitting }) => (
             id="password"
             name="password"
             required
+            component="input"
             type="password"
           />
         </div>

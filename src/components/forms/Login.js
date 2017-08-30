@@ -73,7 +73,7 @@ const Login = ({
           </button>}
         </div>
         <div className={`col-12 ${modal ? 'text-left' : 'text-center'}`}>
-          <Link to="/create-account" className="text-link">Don't have an account?</Link>
+          <Link to="/create-account" className="text-link">Don&#39;t have an account?</Link>
         </div>
       </div>
     </div>

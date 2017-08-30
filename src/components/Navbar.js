@@ -1,101 +1,49 @@
-import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
-import LoginForm from './forms/Login';
-import {
-  Balance,
-  List,
-} from './';
-
-const NavbarLink = ({
-  className = 'col-link px-4 py-3',
-  text,
-  ...props }) => (
-  <NavLink
-    className={className}
-    exact
-    {...props}
-  >
-    {text}
-  </NavLink>
-);
-
-const UserLink = ({
-  className = 'col-link px-4 py-3',
-  iconClass,
-  text,
-  ...props }) => (
-  <NavLink
-    className={className}
-    exact
-    {...props}
-  >
-    <span className={iconClass} />
-    {text}
-  </NavLink>
-);
+import React from 'react';
+import { List, NavLink } from './';
 
 const activeClassName = 'active';
+const links = [
 
-class Navbar extends Component {
- static defaultProps = {
-   className: 'left-nav',
-   styles: {
-     list: 'navbar-links',
-     userActions: '-is-logged-in',
-     userActionsList: '-links',
-   },
-   isLoggedIn: true,
-   userActions: [
-     {
-       to: '/',
-       text: 'Transfer',
-       iconClass: 'icon-eos_icons_transfer mr-2',
-       activeClassName,
-     },
-     {
-       to: '/transactions',
-       text: 'Transaction History',
-       iconClass: 'icon-eos_icons_history mr-2',
-       activeClassName,
-     },
-     {
-       to: '/permissions',
-       text: 'Permissions',
-       iconClass: 'icon-eos_icons_permissions mr-2',
-       activeClassName,
-     },
-   ],
-   links: [
-     { to: '/users', text: 'Users', activeClassName },
-     { to: '/about', text: 'About', activeClassName },
-     { to: '/faq', text: 'FAQ', activeClassName },
-   ],
- }
+  {
+    to: '/users',
+    text: 'Users',
+    activeClassName,
+  },
+  {
+    to: '/about',
+    text: 'About',
+    activeClassName,
+  },
+  {
+    to: '/faq',
+    text: 'FAQ',
+    activeClassName,
+  },
 
- render() {
-   const { className, links, styles, userActions, isLoggedIn } = this.props;
+];
 
-   return (
-     <nav className={className}>
-       <div className={styles.userActions}>
-         {isLoggedIn ? <Balance /> : <LoginForm />}
-         {isLoggedIn &&
-           <List
-             className={styles.userActionLinks}
-             data={userActions}
-             renderItem={UserLink}
-           />
-         }
-       </div>
+const NavbarLink = ({ text, ...props }) => (
+  <NavLink
+    className="col-link px-4 py-3"
+    exact
+    {...props}
+  >
+    {text}
+  </NavLink>
+);
 
-       <List
-         className={styles.list}
-         data={links}
-         renderItem={NavbarLink}
-       />
-     </nav>
-   );
- }
-}
+const Navbar = ({ children }) => (
+  <nav className="left-nav">
+    <div className="-is-logged-in">
+      {children}
+    </div>
+
+    <List
+      className="navbar-links"
+      data={links}
+      renderItem={NavbarLink}
+    />
+  </nav>
+);
 
 export default Navbar;
