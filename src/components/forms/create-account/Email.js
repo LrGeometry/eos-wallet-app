@@ -17,6 +17,7 @@ const Email = ({ handleSubmit, submitting }) => (
             id="username"
             name="username"
             required
+            component="input"
             type="email"
           />
         </div>

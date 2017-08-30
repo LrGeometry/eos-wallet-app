@@ -17,6 +17,7 @@ const Username = ({ handleSubmit, submitting }) => (
             id="username"
             name="username"
             required
+            component="input"
             type="text"
           />
         </div>
