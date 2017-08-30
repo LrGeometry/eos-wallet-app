@@ -29,6 +29,7 @@
     position: relative;
     font-size: 90%;
     text-transform: uppercase;
+    @include transition(background .25s, padding .25s);
     &:after {
       position: absolute;
       bottom: 0;
@@ -47,6 +48,7 @@
     }
     &:hover {
         background: darken($bg-grey-60, 2%);
+        padding-left: 2rem !important;
       }
     &.active {
         background: $orange;
