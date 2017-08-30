@@ -118,7 +118,7 @@ class App extends Component {
             contentLabel={location.pathname}
             onRequestClose={handleModalClose}
           >
-            {renderRoutes(modalRoutes)}
+            {renderRoutes(modalRoutes, { handleModalClose })}
           </Modal>}
       </main>
     );
