@@ -14,10 +14,6 @@
   border-radius: $radius;
 }
 
-@mixin transition($transition...) {
-  transition: $transition;
-}
-
 @mixin inner-shadow($inner-shadow) {
   -webkit-box-shadow: inset $inner-shadow;
   -moz-box-shadow: inset $inner-shadow;
