@@ -9,6 +9,11 @@ import Profile from './Profile';
 import Transactions from './Transactions';
 import Transfer from './Transfer';
 import Users from './Users';
+import {
+  EmailContainer,
+  PhoneContainer,
+  UsernameContainer,
+  PasswordContainer } from '../containers/CreateAccount';
 
 export default [
   {
@@ -16,14 +21,36 @@ export default [
       {
         path: '/login',
         component: Login,
+        exact: true,
         title: '',
         isModal: true,
       },
       {
         path: '/create-account',
         component: CreateAccount,
-        title: '',
         isModal: true,
+        routes: [
+          {
+            path: '/create-account/email',
+            component: EmailContainer,
+            title: '',
+          },
+          {
+            path: '/create-account/phone',
+            component: PhoneContainer,
+            title: '',
+          },
+          {
+            path: '/create-account/password',
+            component: PasswordContainer,
+            title: '',
+          },
+          {
+            path: '/create-account',
+            component: UsernameContainer,
+            title: '',
+          },
+        ],
       },
       {
         path: '/about',

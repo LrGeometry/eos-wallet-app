@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Switch } from 'react-router';
-import { renderRoutes } from 'react-router-config';
+import renderRoutes from '../../func/renderRoutes';
 import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
 import Modal from 'react-modal';
@@ -9,7 +8,9 @@ import {
   Footer,
   Navbar,
   Shortcuts } from '../../components';
-import { BalanceContainer } from '../';
+import {
+  BalanceContainer,
+  UserContainer } from '../';
 import routes from '../../routes';
 import { closeMenu, toggleMenu } from './reducers/menu';
 
@@ -39,7 +40,7 @@ class App extends Component {
     super(props, context);
 
     this.previousLocation = {
-      pathname: '/',
+      pathname: '/about',
       hash: '',
       search: '',
     };
@@ -78,6 +79,7 @@ class App extends Component {
     } = this.props;
     const handleModalClose = this.handleModalClose.bind(this);
     const isModal = modalRoutes.some(({ path }) => new RegExp(path).test(location.pathname));
+    const isUnauth = !account.ownership && /\/(login|create-account)/.test(location.pathname);
 
     location.state = { modal: isModal };
 
@@ -88,12 +90,14 @@ class App extends Component {
         <Header
           isMenuOpen={isMenuOpen}
           onMenuClick={onMenuClick}
-        />
+        >
+          {isUnauth && <UserContainer />}
+        </Header>
 
         <div className="flex-fill">
           <Navbar>
-            {account && <BalanceContainer auth /> }
-            {account && <Shortcuts /> }
+            {isUnauth && <BalanceContainer auth /> }
+            {isUnauth && <Shortcuts /> }
           </Navbar>
 
           <Scene>
@@ -104,9 +108,10 @@ class App extends Component {
               tabIndex={0}
             />
 
-            <Switch location={isModal ? this.previousLocation : location}>
-              {renderRoutes(normalRoutes)}
-            </Switch>
+            {renderRoutes(
+              normalRoutes,
+              null,
+              { location: isModal ? this.previousLocation : location })}
 
             <Footer />
           </Scene>

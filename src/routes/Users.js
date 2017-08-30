@@ -1,6 +1,7 @@
 import React from 'react';
 import { UsersContainer } from '../containers';
 import { Helmet } from 'react-helmet';
+import Authenticated from './Authenticated';
 
 const Users = () => (
   <div>
@@ -30,4 +31,4 @@ const Users = () => (
   </div>
 );
 
-export default Users;
+export default Authenticated(Users);

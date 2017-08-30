@@ -1,8 +1,8 @@
 import React from 'react';
-import { UserContainer } from '../containers';
 import { Link } from './';
 
 const Header = ({
+  children,
   className = 'header row no-gutters items-center p-0 p-md-4',
   onMenuClick,
 }) => (
@@ -23,7 +23,7 @@ const Header = ({
       />
     </Link>
 
-    <UserContainer />
+    {children}
   </header>
 );
 

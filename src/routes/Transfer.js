@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, TransferForm } from '../components';
 import { TransactionsContainer } from '../containers';
 import { Helmet } from 'react-helmet';
+import Authenticated from './Authenticated';
 
 const Transfer = () => (
   <div>
@@ -63,4 +64,4 @@ const Transfer = () => (
   </div>
 );
 
-export default Transfer;
+export default Authenticated(Transfer);
