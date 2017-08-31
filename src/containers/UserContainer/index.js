@@ -22,16 +22,16 @@ const User = ({
   },
 }) => (
   <div className="account-info">
-    <Link to="/preferences">
-      <div className="thumbnail">
+    <div className="thumbnail">
+      <Link to="/preferences">
         <div className="settings icon-eos_icons_settings" />
-        <img
-          alt=""
-          className="user-thumbnail"
-          src="images/male_2.jpg"
-        />
-      </div>
-    </Link>
+      </Link>
+      <img
+        alt=""
+        className="user-thumbnail"
+        src="images/male_2.jpg"
+      />
+    </div>
     <div className={className}>
 
       <p className={styles.displayName}>{greeting}{name}</p>
