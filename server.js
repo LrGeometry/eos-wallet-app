@@ -18,7 +18,6 @@ originServer.set('/balance', '/v1/chain/get_info');
 originServer.set('/account', '/v1/chain/get_account');
 originServer.set('/create-account', '/v1/chain/push_transaction');
 
-
 /* TODO use helmet for CSP, HSTS, and XSS protection */
 /* app.use(helmet()); */
 app.use(cors());
@@ -27,7 +26,6 @@ app.use(logger);
 app.use(bodyParser.urlencoded({
   extended: true,
 }));
-
 
 const fetchFromOriginServer = ({
   method,
@@ -184,12 +182,12 @@ api.get('/stub/login', (req, res) => {
  * * * * * * * * * * * * * * * * * * * * * * */
 api.post('/login', loginParser, async (req, res) => {
   const { username, password } = req.body;
-  // call db
+  // TODO call db
   // this simulates the async nature of the request from the database, stub data is located at the
   // location
   const data = await fetch('/stub/login');
-  // throw if not successful
-  // proceed if successful
+  // TODO throw if not successful
+  // TODO proceed if successful
   res.send(data)
 });
 
@@ -198,12 +196,12 @@ api.post('/login', loginParser, async (req, res) => {
  *
  * * * * * * * * * * * * * * * * * * * * * * */
 api.get('/transactions', async (req, res) => {
-  const X = await fetchFromOriginServer({
+  const originResponse = await fetchFromOriginServer({
     method: 'GET',
-  })
+    /* TODO */
+  });
 
-  const transactions = await fetch('proxy-url.com/v1/account_history/get_transactions');
-  res.send(JSON.stringify(transactions));
+  /* TODO res.send back to client */
 });
 
 /*
@@ -218,7 +216,9 @@ api.post('/transfer', async (req, res) => {
     memo
   } = req.body;
 
-  const f = await fetch(`${baseURL}/v1/`)
+  /* TODO eos api here */
+
+  /* TODO res.send back to client */
 });
 
 app.use('/api', api);
