@@ -1,6 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
 // const helmet = require('helmet');
+const cors = require('cors');
 const bodyParser = require('body-parser');
 const validator = require('validator');
   /* TODO import DB */
@@ -12,30 +13,70 @@ const baseURL = 'proxy-url.com/';
 
 /* TODO use helmet for CSP, HSTS, and XSS protection */
 /* app.use(helmet()); */
+app.use(cors());
 app.use(logger);
 
-const urlEncodedParser = bodyParser.urlencoded({ extended: false });
+const loginParser = bodyParser.json({
+  limit: '10kb',
+  strict: true,
+  type: 'application/json',
+  verify: (req, res) => {
+    const { username, password } = req.body;
+    const usernameParams = {
+      min: 3,
+      max: 40,
+    };
+    const passwordParams = {
+      min: 3,
+      max: 40,
+    };
 
-app.get('/', (req, res) => {
-  res.type('html');
-  res.send(`
-    <style>
-      body { margin: 0; font-family: sans-serif; }
-    </style>
-    <h1>Login</h1>
-    <form action="/api/login" method="post">
-      <input placeholder="Username" name="username" type="text" />
-      <input placeholder="Password" name="password" type="password" />
-      <button type="submit">Submit</button>
-    </form>
-  `);
+    console.log(req.body);
+    console.log(username);
+
+    if (validator.isEmpty(username)) {
+      res.send({
+        message: 'No username',
+        error: '',
+      });
+    }
+
+    if (validator.isEmpty(password)) {
+      res.send({
+        message: 'No password',
+        error: '',
+      });
+    }
+
+    if (validator.isLength(username, usernameParams)) {
+      res.send({
+        message: 'Username too short',
+        error: '',
+      });
+    }
+
+    if (validator.isLength(password, passwordParams)) {
+      res.send({
+        message: 'Password too short',
+        error: '',
+      });
+    }
+  }
 });
 
-api.post('/login', urlEncodedParser, (req, res) => {
+/*
+ * curl -s -X POST \
+ * -H "Content-Type: application/json" \
+ * -d "{ "username": "useruser", "password": "defnotpassword" }" \
+ * http://localhost:4000/api/login
+ * * * * * * * * * * * * * * * * * * * * * * */
+api.post('/login', loginParser, (req, res) => {
   const {
     username,
     password,
   } = req.body;
+
+  console.log(`Logging in user: ${username}`);
 
   // db login
 
@@ -50,6 +91,7 @@ api.post('/login', urlEncodedParser, (req, res) => {
 
   res.type('json');
   res.send(endResponse);
+  res.end();
 });
 
 
@@ -76,11 +118,9 @@ api.get('/transactions', async (req, res) => {
     memo
   } = req.body;
 
-
   const transactions = await fetch('proxy-url.com/v1/account_history/get_transactions');
   res.send(JSON.stringify(transactions));
 });
 
 app.use('/api', api);
-
-app.listen(4000, () => console.log('yay'))
+app.listen(4000);

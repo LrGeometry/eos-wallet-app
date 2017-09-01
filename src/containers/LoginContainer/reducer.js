@@ -42,6 +42,7 @@ function failLogin({ errors }) {
 }
 
 function succeedLogin({ user }) {
+  console.log('hello');
   return {
     type: SUCCEED_LOGIN,
     user,
@@ -50,16 +51,25 @@ function succeedLogin({ user }) {
 
 export function tryLogin(credentials) {
   return async (dispatch) => {
-    dispatch(tryLogin(credentials));
+    const request = {
+      method: 'POST',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(credentials)
+    };
 
-    fetch('/login')
-      .then((user) => {
-        dispatch(succeedLogin({
-          user,
-        }));
-      })
-      .catch((e) => {
-        dispatch(failLogin({ errors: e }));
-      });
+    console.log(request);
+
+    try {
+      const response = await fetch('http://localhost:4000/api/login', request);
+      const user = await response.json();
+
+      dispatch(succeedLogin({ user }));
+    } catch (e) {
+      console.log('login -- error');
+      dispatch(failLogin({ errors: e }));
+    }
   };
 }

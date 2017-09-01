@@ -7,7 +7,7 @@ const mapStateToProps = ({ errorMessage }) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  handleSubmit: (credentials) => {
+  onSubmit: (credentials) => {
     dispatch(tryLogin(credentials));
   },
 });
