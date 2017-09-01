@@ -4,7 +4,7 @@
     min-width: 150px;
     height: 150px;
     border: 8px solid #D75F4C;
-    @include border-radius(75px);
+    border-radius: 75px;
   }
   .profile-meta {
     .username {

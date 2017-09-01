@@ -58,7 +58,7 @@
             background-color: $bg-grey-60;
             width: 24px;
             height: 24px;
-            @include border-radius(15px);
+            border-radius: 15px;
           }
           &:before {
             content: "";

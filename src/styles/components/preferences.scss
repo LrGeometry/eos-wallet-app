@@ -3,7 +3,7 @@
     width: 125px;
     height: 125px;
     border: 8px solid $orange;
-    @include border-radius(75px);
+    border-radius: 75px;
     margin-bottom: 1rem;
   }
   .profile-meta {
