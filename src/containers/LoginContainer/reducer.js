@@ -35,6 +35,7 @@ export function reducer(state = initialState, action = {}) {
 }
 
 function failLogin({ errors }) {
+  console.log('login -- error');
   return {
     type: FAIL_LOGIN,
     errors,
@@ -60,15 +61,12 @@ export function tryLogin(credentials) {
       body: JSON.stringify(credentials)
     };
 
-    console.log(request);
-
     try {
       const response = await fetch('http://localhost:4000/api/login', request);
       const user = await response.json();
 
       dispatch(succeedLogin({ user }));
     } catch (e) {
-      console.log('login -- error');
       dispatch(failLogin({ errors: e }));
     }
   };

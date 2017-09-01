@@ -9,17 +9,110 @@ const validator = require('validator');
 const logger = morgan('combined');
 const app = express();
 const api = express();
-const baseURL = 'proxy-url.com/';
+const baseURL = 'http://104.198.175.158:8888';
+const originServer = new Map();
+
+originServer.set('/transfer', '/v1/chain/push_transaction');
+originServer.set('/transactions', '/v1/account_history/get_transactions');
+originServer.set('/balance', '/v1/chain/get_info');
+originServer.set('/account', '/v1/chain/get_account');
+originServer.set('/create-account', '/v1/chain/push_transaction');
+
 
 /* TODO use helmet for CSP, HSTS, and XSS protection */
 /* app.use(helmet()); */
 app.use(cors());
 app.use(logger);
 
+app.use(bodyParser.urlencoded({
+  extended: true,
+}));
+
+
+const fetchFromOriginServer = ({
+  method,
+  action,
+  headers = {
+    'Content-Type': 'application/json',
+  },
+  body }) => {
+  const originAction = originServer.get(action);
+  const options = {
+    method,
+    headers,
+    body,
+  };
+
+  return fetch(`${baseURL}${originAction}`, options);
+};
+
+/*
+ * /account
+ *
+ * { name: string }
+ *
+ * curl -s -X POST \
+ * -H "Content-Type: application/json" \
+ * -d "{ "username": "useruser", "password": "defnotpassword" }" \
+ * http://localhost:4000/api/account
+ *
+ * * * * * * * * * * * * * * * * * * * * * * */
+api.get('/account', async (req, res) => {
+  const originResponse = await fetchFromOriginServer({
+    action: '/account'
+  });
+
+  if (originResponse.ok) {
+    res.type('json');
+    res.send(originResponse.text());
+    res.end();
+  } else {
+    res.send({
+      message: 'Error',
+      error: '',
+    });
+  }
+});
+
+
+const newAccountParser = bodyParser.json({
+  limit: '10kb',
+  strict: true,
+  verify: (req, res) => {}
+});
+
+/*
+ * /account/new/
+ *
+ * { name: string }
+ *
+ * curl -s -X POST \
+ * -H "Content-Type: application/json" \
+ * -d "{ "username": "useruser", "password": "defnotpassword" }" \
+ * http://localhost:4000/api/account/new
+ *
+ * * * * * * * * * * * * * * * * * * * * * * */
+api.get('/account/new', newAccountParser, async (req, res) => {
+  const originResponse = await fetchFromOriginServer({
+    method: 'GET',
+  });
+
+  if (originResponse.ok) {
+    res.type('json');
+    res.send(originResponse.text());
+    res.end();
+  } else {
+    res.send({
+      message: 'Error',
+      error: '',
+    });
+  }
+});
+
+
 const loginParser = bodyParser.json({
   limit: '10kb',
   strict: true,
-  type: 'application/json',
   verify: (req, res) => {
     const { username, password } = req.body;
     const usernameParams = {
@@ -64,53 +157,60 @@ const loginParser = bodyParser.json({
   }
 });
 
+api.get('/stub/login', (req, res) => {
+  const stub = {
+    user: {
+      name: 'Display Name',
+      url: 'www.website.com',
+      status: 'None',
+      icon: '/iamges/male_2.png',
+    },
+  };
+
+  res.send(JSON.stringify(stub));
+});
+
 /*
+ * /login
+ *
+ * { username: string,
+ *   password: string }
+ *
  * curl -s -X POST \
  * -H "Content-Type: application/json" \
  * -d "{ "username": "useruser", "password": "defnotpassword" }" \
  * http://localhost:4000/api/login
+ *
  * * * * * * * * * * * * * * * * * * * * * * */
-api.post('/login', loginParser, (req, res) => {
-  const {
-    username,
-    password,
-  } = req.body;
-
-  console.log(`Logging in user: ${username}`);
-
-  // db login
-
-
-  const resp = {
-    account: {
-      user: null,
-    },
-  };
-
-  const endResponse = JSON.stringify(resp);
-
-  res.type('json');
-  res.send(endResponse);
-  res.end();
+api.post('/login', loginParser, async (req, res) => {
+  const { username, password } = req.body;
+  // call db
+  // this simulates the async nature of the request from the database, stub data is located at the
+  // location
+  const data = await fetch('/stub/login');
+  // throw if not successful
+  // proceed if successful
+  res.send(data)
 });
 
-
-api.get('/account', async (req, res) => {
-  const { name } = req.body;
-
-  const url = `${apiUri}/v1/chain/get_account`;
-
-  const account = await fetch(url);
-
-
-  res.send(JSON.stringify(account));
-});
-
-api.post('/transfer', async (req, res) => {
-  res.send('');
-});
-
+/*
+ * /transactions
+ *
+ * * * * * * * * * * * * * * * * * * * * * * */
 api.get('/transactions', async (req, res) => {
+  const X = await fetchFromOriginServer({
+    method: 'GET',
+  })
+
+  const transactions = await fetch('proxy-url.com/v1/account_history/get_transactions');
+  res.send(JSON.stringify(transactions));
+});
+
+/*
+ * /transfer
+ *
+ * * * * * * * * * * * * * * * * * * * * * * */
+api.post('/transfer', async (req, res) => {
   const {
     to,
     from,
@@ -118,8 +218,7 @@ api.get('/transactions', async (req, res) => {
     memo
   } = req.body;
 
-  const transactions = await fetch('proxy-url.com/v1/account_history/get_transactions');
-  res.send(JSON.stringify(transactions));
+  const f = await fetch(`${baseURL}/v1/`)
 });
 
 app.use('/api', api);
