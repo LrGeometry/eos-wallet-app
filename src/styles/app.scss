@@ -15,8 +15,12 @@ body {
       left: 275px;
     }
     .menu-closer {
-      opacity: .8;
-      visibility: visible;
+      display: none;
+      @media (max-width: 767px) {
+        opacity: .8;
+        visibility: visible;
+        display: block;
+      }
     }
   }
   .menu-closer {
