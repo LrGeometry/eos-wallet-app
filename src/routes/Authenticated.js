@@ -1,7 +1,7 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 
-const Authenticated = Component => ({ isUnauth = true, ...props }) => {
+const Authenticated = ({ isUnauth = true, ...props }) => (Component) => {
   console.log(props);
   return (
     isUnauth ?
