@@ -73,12 +73,12 @@
     "whatwg-fetch": "2.0.3"
   },
   "scripts": {
-    "start": "node scripts/start.js",
+    "start": "node scripts/start.js && node server.js && mongod",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
     "fix": "eslint --fix src",
     "postinstall": "npm rebuild node-sass",
-    "now-start": "serve build/"
+    "now-start": "serve build/ && node server.js && mongod"
   },
   "jest": {
     "collectCoverageFrom": [

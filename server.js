@@ -5,7 +5,7 @@ const cors = require('cors');
 const fetch = require('isomorphic-fetch');
 const bodyParser = require('body-parser');
 const { check, validationResult } = require('express-validator/check');
-  /* TODO import DB */
+const db = require('./db');
 const assert = require('assert');
 
 const logger = morgan('combined');
@@ -138,6 +138,8 @@ api.post('/login', (req, res) => {
       icon: '/iamges/male_2.png',
     },
   };
+
+
 
   /* TODO call DB, check for user */
 
