@@ -42,7 +42,7 @@ const Login = ({
       />
     </fieldset>
 
-    <fieldset className="form-group">
+    <fieldset className="form-check">
       <label htmlFor="keepLoggedIn">Keep me logged in</label>
       <Field
         name="keepLoggedIn"
