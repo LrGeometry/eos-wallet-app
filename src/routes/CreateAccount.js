@@ -1,9 +1,8 @@
 import React from 'react';
-import { renderRoutes } from 'react-router-config';
-import subRoutes from './subroutes';
+import renderRoutes from '../func/renderRoutes';
 import { Progress } from '../components';
 
-const CreateAccount = ({ handleModalClose }) => (
+const CreateAccount = ({ handleModalClose, routes }) => (
   <div className="login">
     <div className="login-header modal-header">
       <h2>Create your EOS account</h2>
@@ -27,7 +26,7 @@ const CreateAccount = ({ handleModalClose }) => (
 
       <Progress />
 
-      {renderRoutes(subRoutes[0].routes)}
+      {renderRoutes(routes)}
     </div>
   </div>
 );

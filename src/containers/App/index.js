@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Switch } from 'react-router';
-import { renderRoutes } from 'react-router-config';
+import renderRoutes from '../../func/renderRoutes';
 import { Helmet } from 'react-helmet';
 import { connect } from 'react-redux';
 import Modal from 'react-modal';
@@ -9,12 +8,15 @@ import {
   Footer,
   Navbar,
   Shortcuts } from '../../components';
-import { BalanceContainer } from '../';
-import routes from '../../routes';
+import {
+  BalanceContainer,
+  UserContainer } from '../';
+import _routes from '../../routes';
 import { closeMenu, toggleMenu } from './reducers/menu';
 
-const normalRoutes = routes[0].routes.filter(r => !r.isModal);
-const modalRoutes = routes[0].routes.filter(r => r.isModal);
+const [{ routes }] = _routes;
+const normalRoutes = routes.filter(r => !r.isModal);
+const modalRoutes = routes.filter(r => r.isModal);
 
 const Scene = ({
   children,
@@ -38,11 +40,13 @@ class App extends Component {
   constructor(props, context) {
     super(props, context);
 
-    this.previousLocation = {
-      pathname: '/',
+    /* eslint-disable */
+    this.previousLocation = this.unauthLocation = {
+      pathname: '/about',
       hash: '',
       search: '',
     };
+    /* eslint-enable */
   }
 
   componentDidMount() {
@@ -52,13 +56,13 @@ class App extends Component {
   }
 
   componentWillUpdate(nextProps) {
-    const { location } = this.props;
+    const { auth, location } = this.props;
     // set previousLocation if props.location is not modal
     if (
       nextProps.history.action !== 'POP' &&
       (!location.state || !location.state.modal)
     ) {
-      this.previousLocation = this.props.location;
+      this.previousLocation = auth ? this.props.location : this.unauthLocation;
     }
   }
 
@@ -69,7 +73,7 @@ class App extends Component {
 
   render() {
     const {
-      account,
+      auth,
       className,
       forceCloseMenu,
       isMenuOpen,
@@ -88,12 +92,14 @@ class App extends Component {
         <Header
           isMenuOpen={isMenuOpen}
           onMenuClick={onMenuClick}
-        />
+        >
+          {auth && <UserContainer />}
+        </Header>
 
         <div className="flex-fill">
           <Navbar>
-            {account && <BalanceContainer auth /> }
-            {account && <Shortcuts /> }
+            {auth && <BalanceContainer auth /> }
+            {auth && <Shortcuts /> }
           </Navbar>
 
           <Scene>
@@ -104,9 +110,10 @@ class App extends Component {
               tabIndex={0}
             />
 
-            <Switch location={isModal ? this.previousLocation : location}>
-              {renderRoutes(normalRoutes)}
-            </Switch>
+            {renderRoutes(
+              normalRoutes,
+              { auth },
+              { location: isModal ? this.previousLocation : location })}
 
             <Footer />
           </Scene>
@@ -125,9 +132,9 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = ({ balance, menu }) => ({
+const mapStateToProps = ({ menu, user }) => ({
   isMenuOpen: menu.isOpen,
-  account: balance.account,
+  auth: !user,
 });
 
 const mapDispatchToProps = dispatch => ({
