@@ -40,11 +40,13 @@ class App extends Component {
   constructor(props, context) {
     super(props, context);
 
-    this.previousLocation = {
+    /* eslint-disable */
+    this.previousLocation = this.unauthLocation = {
       pathname: '/about',
       hash: '',
       search: '',
     };
+    /* eslint-enable */
   }
 
   componentDidMount() {
@@ -54,13 +56,13 @@ class App extends Component {
   }
 
   componentWillUpdate(nextProps) {
-    const { location } = this.props;
+    const { auth, location } = this.props;
     // set previousLocation if props.location is not modal
     if (
       nextProps.history.action !== 'POP' &&
       (!location.state || !location.state.modal)
     ) {
-      this.previousLocation = this.props.location;
+      this.previousLocation = auth ? this.props.location : this.unauthLocation;
     }
   }
 
@@ -132,7 +134,7 @@ class App extends Component {
 
 const mapStateToProps = ({ menu, user }) => ({
   isMenuOpen: menu.isOpen,
-  auth: !!user,
+  auth: !user,
 });
 
 const mapDispatchToProps = dispatch => ({
