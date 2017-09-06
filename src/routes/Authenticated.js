@@ -1,13 +1,16 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 
-const Authenticated = ({ isUnauth = true, ...props }) => (Component) => {
-  console.log(props);
+const Authenticated = Component => ({ auth = false, invert = false, ...props }) => {
+  const redirect = !invert ? !auth : invert && auth;
+
+  console.log(auth);
+
   return (
-    isUnauth ?
+    redirect ?
       <Redirect from={props.location.pathname} to="/login" />
       : <Component {...props} />
-    );
+  );
 };
 
 

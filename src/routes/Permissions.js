@@ -1,7 +1,6 @@
 import React from 'react';
 import { ResetPasswordForm } from '../components';
 import { Helmet } from 'react-helmet';
-import Authenticated from './Authenticated';
 
 const Permissions = () => (
   <div>
@@ -78,4 +77,4 @@ const Permissions = () => (
   </div>
 );
 
-export default Authenticated(Permissions);
+export default Permissions;

@@ -1,7 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { BalanceContainer, TransactionsContainer } from '../containers';
-import Authenticated from './Authenticated';
 
 const Profile = () => (
   <div>
@@ -57,4 +56,4 @@ const Profile = () => (
   </div>
 );
 
-export default Authenticated(Profile);
+export default Profile;

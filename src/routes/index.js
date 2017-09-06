@@ -66,31 +66,37 @@ export default [
         path: '/',
         component: Transfer,
         exact: true,
+        authReq: true,
         title: '',
       },
       {
         path: '/transactions',
         component: Transactions,
+        authReq: true,
         title: '',
       },
       {
         path: '/users',
         component: Users,
+        authReq: true,
         title: '',
       },
       {
         path: '/user/:id',
         component: Profile,
+        authReq: true,
         title: '',
       },
       {
         path: '/permissions',
         component: Permissions,
+        authReq: true,
         title: '',
       },
       {
         path: '/preferences',
         component: Preferences,
+        authReq: true,
         title: '',
       },
       {

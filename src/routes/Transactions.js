@@ -1,7 +1,6 @@
 import React from 'react';
 import { TransactionsContainer } from '../containers';
 import { Helmet } from 'react-helmet';
-import Authenticated from './Authenticated';
 
 const Transactions = () => (
   <div>
@@ -32,4 +31,4 @@ const Transactions = () => (
   </div>
 );
 
-export default Authenticated(Transactions);
+export default Transactions;

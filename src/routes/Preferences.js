@@ -1,7 +1,6 @@
 import React from 'react';
 import { PreferencesForm } from '../components';
 import { Helmet } from 'react-helmet';
-import Authenticated from './Authenticated';
 
 const Preferences = () => (
   <div className="profile">
@@ -51,4 +50,4 @@ const Preferences = () => (
   </div>
 );
 
-export default Authenticated(Preferences);
+export default Preferences;

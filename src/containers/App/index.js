@@ -11,11 +11,12 @@ import {
 import {
   BalanceContainer,
   UserContainer } from '../';
-import routes from '../../routes';
+import _routes from '../../routes';
 import { closeMenu, toggleMenu } from './reducers/menu';
 
-const normalRoutes = routes[0].routes.filter(r => !r.isModal);
-const modalRoutes = routes[0].routes.filter(r => r.isModal);
+const [{ routes }] = _routes;
+const normalRoutes = routes.filter(r => !r.isModal);
+const modalRoutes = routes.filter(r => r.isModal);
 
 const Scene = ({
   children,
@@ -70,7 +71,7 @@ class App extends Component {
 
   render() {
     const {
-      account,
+      auth,
       className,
       forceCloseMenu,
       isMenuOpen,
@@ -79,7 +80,6 @@ class App extends Component {
     } = this.props;
     const handleModalClose = this.handleModalClose.bind(this);
     const isModal = modalRoutes.some(({ path }) => new RegExp(path).test(location.pathname));
-    const isUnauth = !account.ownership && /\/(login|create-account)/.test(location.pathname);
 
     location.state = { modal: isModal };
 
@@ -91,13 +91,13 @@ class App extends Component {
           isMenuOpen={isMenuOpen}
           onMenuClick={onMenuClick}
         >
-          {isUnauth && <UserContainer />}
+          {auth && <UserContainer />}
         </Header>
 
         <div className="flex-fill">
           <Navbar>
-            {isUnauth && <BalanceContainer auth /> }
-            {isUnauth && <Shortcuts /> }
+            {auth && <BalanceContainer auth /> }
+            {auth && <Shortcuts /> }
           </Navbar>
 
           <Scene>
@@ -110,7 +110,7 @@ class App extends Component {
 
             {renderRoutes(
               normalRoutes,
-              null,
+              { auth },
               { location: isModal ? this.previousLocation : location })}
 
             <Footer />
@@ -130,9 +130,9 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = ({ balance, menu }) => ({
+const mapStateToProps = ({ menu, user }) => ({
   isMenuOpen: menu.isOpen,
-  account: balance.account,
+  auth: !!user,
 });
 
 const mapDispatchToProps = dispatch => ({
