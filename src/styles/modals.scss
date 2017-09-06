@@ -1,6 +1,7 @@
 .ReactModal__Body--open {
   .ReactModal__Overlay {
     background-color: rgba($bg-grey-60,0.9) !important;
+    z-index: 1;
   }
 
   .ReactModal__Content {
@@ -9,8 +10,13 @@
     padding: 0 !important;
     border: 0 !important;
     max-width: 500px;
-    bottom: auto !important;
     margin: 0 auto;
+    @media (max-width: 767px) {
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      bottom: 0 !important;
+    }
     .modal-header {
       background-color: $orange;
       padding: 1.5rem 2rem;
