@@ -1,4 +1,4 @@
-/* global fetch */
+/* global fetch, Headers */
 const TRY_LOGIN = 'TRY_LOGIN';
 const FAIL_LOGIN = 'FAIL_LOGIN';
 const SUCCEED_LOGIN = 'SUCCEED_LOGIN';
@@ -43,7 +43,7 @@ function failLogin({ errors }) {
 }
 
 function succeedLogin({ user }) {
-  console.log('hello');
+  console.log(user);
   return {
     type: SUCCEED_LOGIN,
     user,
@@ -52,17 +52,21 @@ function succeedLogin({ user }) {
 
 export function tryLogin(credentials) {
   return async (dispatch) => {
+    console.log(credentials);
+
     const request = {
       method: 'POST',
       mode: 'cors',
-      headers: {
+      headers: new Headers({
         'Content-Type': 'application/json',
-      },
+      }),
       body: JSON.stringify(credentials)
     };
 
     try {
-      const response = await fetch('http://localhost:4000/api/login', request);
+      console.log('awaiting response');
+      const response = await fetch('http://localhost:4000/api/login/', request);
+      console.log('parsing response');
       const user = await response.json();
 
       dispatch(succeedLogin({ user }));

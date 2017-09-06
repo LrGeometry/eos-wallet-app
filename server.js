@@ -2,30 +2,34 @@ const express = require('express');
 const morgan = require('morgan');
 // const helmet = require('helmet');
 const cors = require('cors');
+const fetch = require('isomorphic-fetch');
 const bodyParser = require('body-parser');
-const validator = require('validator');
+const { check, validationResult } = require('express-validator/check');
   /* TODO import DB */
+const assert = require('assert');
 
 const logger = morgan('combined');
 const app = express();
 const api = express();
-const baseURL = 'http://104.198.175.158:8888';
-const originServer = new Map();
+const originServerURL = 'http://104.198.175.158:8888';
+const actions = new Map([
+  ['/transfer', '/v1/chain/push_transaction'],
+  ['/transactions', '/v1/account_history/get_transactions'],
+  ['/balance', '/v1/chain/get_info'],
+  ['/account', '/v1/chain/get_account'],
+  ['/create-account', '/v1/chain/push_transaction'],
+]);
 
-originServer.set('/transfer', '/v1/chain/push_transaction');
-originServer.set('/transactions', '/v1/account_history/get_transactions');
-originServer.set('/balance', '/v1/chain/get_info');
-originServer.set('/account', '/v1/chain/get_account');
-originServer.set('/create-account', '/v1/chain/push_transaction');
+const allowedHTTPMethods = new Set([
+  'GET',
+  'POST',
+]);
 
 /* TODO use helmet for CSP, HSTS, and XSS protection */
 /* app.use(helmet()); */
 app.use(cors());
 app.use(logger);
-
-app.use(bodyParser.urlencoded({
-  extended: true,
-}));
+app.use(bodyParser.json());
 
 const fetchFromOriginServer = ({
   method,
@@ -34,14 +38,26 @@ const fetchFromOriginServer = ({
     'Content-Type': 'application/json',
   },
   body }) => {
-  const originAction = originServer.get(action);
+  assert.fail(
+    method,
+    allowedHTTPMethods.get(method),
+    (!method ? '"method" is undefined.' : `HTTP method "${method}" is not allowed.`),
+  );
+
+  assert.fail(
+    action,
+    actions.get(action),
+    (!action ? '"action" is undefined.' : `Action "${action}" does not exist.`),
+  );
+
+  const originAction = actions.get(action);
   const options = {
     method,
     headers,
     body,
   };
 
-  return fetch(`${baseURL}${originAction}`, options);
+  return fetch(`${originServerURL}${originAction}`, options);
 };
 
 /*
@@ -73,12 +89,6 @@ api.get('/account', async (req, res) => {
 });
 
 
-const newAccountParser = bodyParser.json({
-  limit: '10kb',
-  strict: true,
-  verify: (req, res) => {}
-});
-
 /*
  * /account/new/
  *
@@ -90,7 +100,7 @@ const newAccountParser = bodyParser.json({
  * http://localhost:4000/api/account/new
  *
  * * * * * * * * * * * * * * * * * * * * * * */
-api.get('/account/new', newAccountParser, async (req, res) => {
+api.post('/account/new', async (req, res) => {
   const originResponse = await fetchFromOriginServer({
     method: 'GET',
   });
@@ -108,54 +118,18 @@ api.get('/account/new', newAccountParser, async (req, res) => {
 });
 
 
-const loginParser = bodyParser.json({
-  limit: '10kb',
-  strict: true,
-  verify: (req, res) => {
-    const { username, password } = req.body;
-    const usernameParams = {
-      min: 3,
-      max: 40,
-    };
-    const passwordParams = {
-      min: 3,
-      max: 40,
-    };
-
-    console.log(req.body);
-    console.log(username);
-
-    if (validator.isEmpty(username)) {
-      res.send({
-        message: 'No username',
-        error: '',
-      });
-    }
-
-    if (validator.isEmpty(password)) {
-      res.send({
-        message: 'No password',
-        error: '',
-      });
-    }
-
-    if (validator.isLength(username, usernameParams)) {
-      res.send({
-        message: 'Username too short',
-        error: '',
-      });
-    }
-
-    if (validator.isLength(password, passwordParams)) {
-      res.send({
-        message: 'Password too short',
-        error: '',
-      });
-    }
-  }
-});
-
-api.get('/stub/login', (req, res) => {
+/*
+ * /login
+ *
+ * { username: string, password }
+ *
+ * curl -s -X POST \
+ * -H "Content-Type: application/json" \
+ * -d "{ "account_name": "test" }" \
+ * http://localhost:4000/api/login
+ *
+ * * * * * * * * * * * * * * * * * * * * * * */
+api.post('/login', (req, res) => {
   const stub = {
     user: {
       name: 'Display Name',
@@ -165,31 +139,11 @@ api.get('/stub/login', (req, res) => {
     },
   };
 
+  /* TODO call DB, check for user */
+
   res.send(JSON.stringify(stub));
 });
 
-/*
- * /login
- *
- * { username: string,
- *   password: string }
- *
- * curl -s -X POST \
- * -H "Content-Type: application/json" \
- * -d "{ "username": "useruser", "password": "defnotpassword" }" \
- * http://localhost:4000/api/login
- *
- * * * * * * * * * * * * * * * * * * * * * * */
-api.post('/login', loginParser, async (req, res) => {
-  const { username, password } = req.body;
-  // TODO call db
-  // this simulates the async nature of the request from the database, stub data is located at the
-  // location
-  const data = await fetch('/stub/login');
-  // TODO throw if not successful
-  // TODO proceed if successful
-  res.send(data)
-});
 
 /*
  * /transactions
@@ -198,6 +152,7 @@ api.post('/login', loginParser, async (req, res) => {
 api.get('/transactions', async (req, res) => {
   const originResponse = await fetchFromOriginServer({
     method: 'GET',
+    action: '/transactions',
     /* TODO */
   });
 
@@ -220,6 +175,10 @@ api.post('/transfer', async (req, res) => {
 
   /* TODO res.send back to client */
 });
+
+app.use(bodyParser.urlencoded({
+  extended: true,
+}));
 
 app.use('/api', api);
 app.listen(4000);
