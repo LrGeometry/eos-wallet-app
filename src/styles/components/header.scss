@@ -17,6 +17,9 @@
       line-height: 50px;
       font-size: 130%;
     }
+    &:focus {
+      outline: none;
+    }
   }
   .logo {
     height: 55px;
