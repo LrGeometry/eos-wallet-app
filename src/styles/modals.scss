@@ -11,7 +11,9 @@
     border: 0 !important;
     max-width: 500px;
     margin: 0 auto;
-    @media (max-width: 767px) {
+    bottom: auto !important;
+    @media (max-width: 575px) {
+      max-width: 100%;
       top: 0 !important;
       left: 0 !important;
       right: 0 !important;
