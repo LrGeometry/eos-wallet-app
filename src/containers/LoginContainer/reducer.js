@@ -5,10 +5,9 @@ const SUCCEED_LOGIN = 'SUCCEED_LOGIN';
 
 const initialState = {
   user: {
-    name: 'Display Name',
+    display_name: 'Display Name',
     website: 'website',
-    status: 'something',
-    icon: '/images/male_2.png',
+    image_url: '/images/male_2.png',
   },
 };
 
@@ -35,7 +34,7 @@ export function reducer(state = initialState, action = {}) {
 }
 
 function failLogin({ errors }) {
-  console.log('login -- error');
+  console.log('failed...');
   return {
     type: FAIL_LOGIN,
     errors,
@@ -43,7 +42,6 @@ function failLogin({ errors }) {
 }
 
 function succeedLogin({ user }) {
-  console.log(user);
   return {
     type: SUCCEED_LOGIN,
     user,
@@ -52,8 +50,6 @@ function succeedLogin({ user }) {
 
 export function tryLogin(credentials) {
   return async (dispatch) => {
-    console.log(credentials);
-
     const request = {
       method: 'POST',
       mode: 'cors',
@@ -64,9 +60,7 @@ export function tryLogin(credentials) {
     };
 
     try {
-      console.log('awaiting response');
       const response = await fetch('http://localhost:4000/api/login/', request);
-      console.log('parsing response');
       const user = await response.json();
 
       dispatch(succeedLogin({ user }));

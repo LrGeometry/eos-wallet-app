@@ -1,17 +1,17 @@
+global.Promise = require('bluebird');
 const express = require('express');
 const morgan = require('morgan');
 // const helmet = require('helmet');
 const cors = require('cors');
 const fetch = require('isomorphic-fetch');
 const bodyParser = require('body-parser');
-const { check, validationResult } = require('express-validator/check');
-const db = require('./db');
+const { User } = require('./db');
 const assert = require('assert');
 
 const logger = morgan('combined');
 const app = express();
 const api = express();
-const originServerURL = 'http://104.198.175.158:8888';
+const originServerURL = 'https://eosd.objectcomputing.com/';
 const actions = new Map([
   ['/transfer', '/v1/chain/push_transaction'],
   ['/transactions', '/v1/account_history/get_transactions'],
@@ -129,21 +129,44 @@ api.post('/account/new', async (req, res) => {
  * http://localhost:4000/api/login
  *
  * * * * * * * * * * * * * * * * * * * * * * */
-api.post('/login', (req, res) => {
-  const stub = {
-    user: {
-      name: 'Display Name',
-      url: 'www.website.com',
-      status: 'None',
-      icon: '/iamges/male_2.png',
-    },
-  };
+api.post('/login', async (req, res) => {
+  const { account_name, owner_key } = req.body;
 
+  console.log(`attempting login for ${account_name}`)
 
+  try {
+    const user = await User.findOne({ account_name }).exec();
 
-  /* TODO call DB, check for user */
+    if (!user) {
+      throw new Error('User not found');
+    }
+    
+    const validPassword  = await user.passwordIsValid(owner_key);
 
-  res.send(JSON.stringify(stub));
+    if (validPassword) {
+      console.log(`-- successful authenitcation for ${account_name}`);
+  
+      const {
+        image_url,
+        display_name,
+        website,
+      } = user;
+  
+      const clientUserData = {
+        image_url,
+        display_name,
+        website,
+      };
+  
+      res.send(JSON.stringify(clientUserData));
+    } else {
+      throw new Error('Invalid password')
+    }
+  } catch (e) {
+    res.status(401).json({ 
+      message: e.message
+    })
+  }
 });
 
 

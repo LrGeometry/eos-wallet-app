@@ -7,38 +7,38 @@ const Login = ({
   handleClose,
   modal,
   submitting,
-  username }) => (
+  accountName }) => (
   <form onSubmit={handleSubmit}>
-    <p className={`${!modal && 'd-none'}`}>This operation requires your Active Key or Master password.</p>
+    <p className={`${!modal && 'd-none'}`}>This operation requires your Owner Key.</p>
     <fieldset className="form-group">
-      <label htmlFor="username">Username</label>
+      <label htmlFor="account_name">Account Name</label>
       <div clasName="input-container">
         <div className="icon" />
         <div className="input-prefix">
           <Field
-            aria-describedby="username"
+            aria-describedby="account_name"
             className="form-control form-control-lg prefix"
-            id="username"
-            name="username"
+            id="account_name"
+            name="account_name"
             required
             type="text"
             component="input"
-            value={username}
+            value={accountName}
           />
         </div>
       </div>
     </fieldset>
 
     <fieldset className="form-group">
-      <label htmlFor="username">Password</label>
+      <label htmlFor="owner_key">Owner Key</label>
       <Field
-        aria-describedby="password"
+        aria-describedby="owner_key"
         className="form-control form-control-lg"
-        id="password"
-        name="password"
+        id="owner_key"
+        name="owner_key"
         required
         component="input"
-        type="text"
+        type="password"
       />
     </fieldset>
 
